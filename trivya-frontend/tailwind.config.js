@@ -24,7 +24,8 @@ module.exports = {
       'green': '#01855B', // Pantone 17-6030 Jelly Bean
       'green-secondary': '#002C17', // Pantone 627 C
       'purple': '#6050A8', // Pantone 18-3940 TN Simply Purple
-      'purple-secondary': '#501F60' // Pantone 19-3528 Imperial Purple
+      'purple-secondary': '#501F60', // Pantone 19-3528 Imperial Purple
+      'black': '#000'
     },
   },
   plugins: [],

@@ -16,6 +16,7 @@ const TeamSelection = () => {
     const greenSecondary = '#002C17'
     const purple = '#6050A8'
     const purpleSecondary = '#501F60'
+    const black = '#000'
 
 
     const [tempPlayers, setTempPlayers] = useState(4)
@@ -178,81 +179,73 @@ const TeamSelection = () => {
 
     return (
     <>
-        <p className={`${team1TextColour} ${team1BackgroundColour} font-secondary text-5xl absolute left-20 top-20`}>{team1Name}</p>
-        <p className={`${team2TextColour} ${team2BackgroundColour} font-secondary text-5xl absolute ${tempPlayers >= 3 ? "right-20 top-20" : "right-20 bottom-20"}`}>{team2Name}</p>
-        <p className={`${team3TextColour} ${team3BackgroundColour} font-secondary text-5xl absolute ${tempPlayers >= 3 ? "visible" : "hidden"} left-20 bottom-20`}>{team3Name}</p>
-        <p className={`${team4TextColour} ${team4BackgroundColour} font-secondary text-5xl absolute ${tempPlayers == 4 ? "visible" : "hidden"} right-20 bottom-20`}>{team4Name}</p>
+    <form>
+        <input type="text" className={`${team1TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute lg:left-20 left-10 top-20`} maxlength="10" value={team1Name} onChange={handleTeam1Name} />
+        <input type="text" className={`${team2TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? "lg:right-20 right-10 top-20" : "lg:right-20 right-10 bottom-20"}`} maxlength="10" value={team2Name} onChange={handleTeam2Name} />
+        <input type="text" className={`${team3TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? "visible" : "hidden"} lg:left-20 left-10 bottom-20`} maxlength="10" value={team3Name} onChange={handleTeam3Name} />
+        <input type="text" className={`${team4TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers == 4 ? "visible" : "hidden"} lg:right-20 right-10 bottom-20`} maxlength="10" value={team4Name} onChange={handleTeam4Name} />
+    </form>
 
-        <div className=''>
-            <div className={`bg-primary m-auto text-center rounded-xl w-80 my-40`}>
-                <div className=''>
-                    <p className="text-black text-lg">Enter Team 1 name:</p>
-                    <form className='flex justify-center'>
-                        <input type="text" className='text-3xl w-64 text-center flex mx-5 text-primary bg-secondary border-secondary border-2 rounded-lg' maxlength="10" value={team1Name} onChange={handleTeam1Name} />
-                    </form>
-                    <p className=''>Select a colour:</p>
-                    <div>
-                        <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-red-secondary`}></button>
-                        <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-blue-secondary`}></button>
-                        <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-green-secondary`}></button>
-                        <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-purple-secondary`}></button>
-                    </div>
-                </div>
-                <div className=''>
-                    <p className="text-black text-lg">Enter Team 2 name:</p>
-                    <form className='flex justify-center'>
-                        <input type="text" className='text-3xl w-64 text-center flex mx-5 text-primary bg-secondary border-secondary border-2 rounded-lg' maxlength="10" value={team2Name} onChange={handleTeam2Name} />
-                    </form>
-                    <p className=''>Select a colour:</p>
-                    <div>
-                        <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-red`}></button>
-                        <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-blue`}></button>
-                        <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-green`}></button>
-                        <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-purple`}></button>
-                    </div>
-                </div>
-                <div className=''>
-                    <p className="text-black text-lg">Enter Team 3 name:</p>
-                    <form className='flex justify-center'>
-                        <input type="text" className='text-3xl w-64 text-center flex mx-5 text-primary bg-secondary border-secondary border-2 rounded-lg' maxlength="10" value={team3Name} onChange={handleTeam3Name} />
-                    </form>
-                    <p className=''>Select a colour:</p>
-                    <div>
-                        <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-red`}></button>
-                        <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-blue`}></button>
-                        <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-green`}></button>
-                        <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-purple`}></button>
-                    </div>
-                </div>
-                <div className=''>
-                    <p className="text-black text-lg">Enter Team 4 name:</p>
-                    <form className='flex justify-center'>
-                        <input type="text" className='text-3xl w-64 text-center flex mx-5 text-primary bg-secondary border-secondary border-2 rounded-lg' maxlength="10" value={team4Name} onChange={handleTeam4Name} />
-                    </form>
-                    <p className=''>Select a colour:</p>
-                    <div>
-                        <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-red-secondary`}></button>
-                        <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-blue-secondary`}></button>
-                        <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-green-secondary`}></button>
-                        <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-purple-secondary`}></button>
-                    </div>
-                </div>
-            </div>
+    <div className='absolute top-40 left-6 flex-col'>
+        <div className='-mb-2'>
+            <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-red-secondary rounded-tl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-blue-secondary rounded-tr-xl shadow-lg shadow-black/50`}></button>
         </div>
+        <div className=''>
+            <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-green-secondary rounded-bl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam1Colour} className={`h-16 w-16 bg-purple-secondary rounded-br-xl shadow-lg shadow-black/50`}></button>
+        </div>
+    </div>
 
+    <div className='absolute top-40 right-6 flex-col'>
+    <div className='-mb-2'>
+            <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-red rounded-tl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-blue rounded-tr-xl shadow-lg shadow-black/50`}></button>
+        </div>
+        <div className=''>
+            <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-green rounded-bl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam2Colour} className={`h-16 w-16 bg-purple rounded-br-xl shadow-lg shadow-black/50`}></button>
+        </div>
+    </div>
 
-        {/* <div className=''>
-            <div className=''>
-                <Link to="/dice-roll">
-                    <button onClick={handleSubmit} className=''>Confirm</button>
-                </Link>
-            </div>
-            <div className=''>
-                <Link to="/">
-                    <button className=''>Back to Main Menu</button>
-                </Link>
-            </div>
-        </div> */}
+    <div className='absolute bottom-40 left-6 flex-col'>
+    <div className='-mb-2'>
+            <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-red rounded-tl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-blue rounded-tr-xl shadow-lg shadow-black/50`}></button>
+        </div>
+        <div className=''>
+            <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-green rounded-bl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam3Colour} className={`h-16 w-16 bg-purple rounded-br-xl shadow-lg shadow-black/50`}></button>
+        </div>
+    </div>
+
+    <div className='absolute bottom-40 right-6 flex-col'>
+        <div className='-mb-2'>
+                <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-red-secondary rounded-tl-xl shadow-lg shadow-black/50`}></button>
+                <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-blue-secondary rounded-tr-xl shadow-lg shadow-black/50`}></button>
+        </div>
+        <div className=''>
+            <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-green-secondary rounded-bl-xl shadow-lg shadow-black/50`}></button>
+            <button onClick={selectTeam4Colour} className={`h-16 w-16 bg-purple-secondary rounded-br-xl shadow-lg shadow-black/50`}></button>
+        </div>
+    </div>
+
+    <div className='flex m-auto justify-center pt-0.5 bg-secondary w-80 h-9 rounded-br-xl rounded-bl-xl'>
+        <p className='text-primary text-xl  px-3 rounded-br-xl rounded-bl-xl'>Tap on a team's name to edit!</p>
+    </div>
+
+    <div className=''>
+        <div className=''>
+            <Link to="/dice-roll">
+                <button onClick={handleSubmit} className=''>Confirm</button>
+            </Link>
+        </div>
+        <div className=''>
+            <Link to="/">
+                <button className=''>Back to Main Menu</button>
+            </Link>
+        </div>
+    </div>
     </>
   )
 }
