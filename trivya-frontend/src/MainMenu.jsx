@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSliders, faClock, faChampagneGlasses, faBan, faCircle} from '@fortawesome/free-solid-svg-icons'
+import { faSliders, faClock, faChampagneGlasses, faBan, faCircle, faThumbsUp, faThumbsDown} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import Logo from './Logo'
 import useReactIpLocation from "react-ip-details"
@@ -66,13 +66,7 @@ function MainMenu() {
                             <FontAwesomeIcon icon={faSliders} className='text-secondary text-4xl sm:text-5xl flex m-auto pb-3' />
                             <p className='text-secondary text-md sm:text-xl font-medium font-secondary select-none'>Custom Mode</p>
                         </Link>
-                    </button>                    
-                    <button className="bg-primary rounded-lg cursor-pointer w-28 h-28 sm:w-40 sm:h-40">
-                        <Link to="/customMode">
-                            <FontAwesomeIcon icon={faSliders} className='text-secondary text-4xl sm:text-5xl flex m-auto pb-3' />
-                            <p className='text-secondary text-md sm:text-xl font-medium font-secondary select-none'>Custom Mode</p>
-                        </Link>
-                    </button>                    
+                    </button>                 
                     { isMaltaDisplayed &&
                     <div onClick={() => toggleMaltaMode()} className='cursor-pointer absolute right-14 sm:right-20 top-1 pt-1'>
                         {/* <p className={`${!isInMalta ? "text-secondary" : "text-primary"} text-3xl font-bold absolute right-5 top-2 pt-1 z-10 select-none`}></p> */}
@@ -101,8 +95,16 @@ function MainMenu() {
             <div className='absolute bottom-0 left-0 right-0 flex m-auto items-center pt-0.5 bg-primary w-72 h-24 rounded-tr-xl rounded-tl-xl'>
                 <p className='flex text-secondary text-md sm:text-xl text-left px-3 pt-1'>Joining from Malta?<br/>Would you like for Malta<br/>questions to be included?</p>
                 <div className='flex flex-col'>
-                    <button onClick={() => {setModalDisplayed(false); setMaltaDisplayed(true); setMaltaMode(true)}}>yes</button>
-                    <button onClick={() => {setModalDisplayed(false); setMaltaDisplayed(false)}}>no</button>
+                    <button onClick={() => {setModalDisplayed(false); setMaltaDisplayed(true); setMaltaMode(true)}} 
+                    className="w-full rounded-lg text-primary bg-secondary ml-1 p-1 my-1">
+                        Yes
+                        <FontAwesomeIcon icon={faThumbsUp} className="pl-2"/>
+                    </button>
+                    <button onClick={() => {setModalDisplayed(false); setMaltaDisplayed(false)}}
+                    className="w-full rounded-lg text-primary bg-secondary ml-1 p-1">
+                        No
+                        <FontAwesomeIcon icon={faThumbsDown} className="pl-2"/>
+                    </button>
                 </div>
             </div>
             }
