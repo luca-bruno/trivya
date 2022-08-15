@@ -110,6 +110,7 @@ const DiceRoll = () => {
     return <div className='absolute m-auto left-0 right-0 pt-0.5 bg-secondary w-80 h-9 rounded-br-xl rounded-bl-xl'>
                         <p className='text-primary text-center text-xl px-3 rounded-br-xl rounded-bl-xl'>
                          { teams.findIndex(isTrue) !== -1
+                         //  FIXME: Replace with team stored in Redux
                            ? `Team ${teams.findIndex(isTrue) + 1} begins!`
                            : isRolling
                              ? 'Rolling...'
@@ -158,8 +159,8 @@ const DiceRoll = () => {
                 </Link>
             }
             </div>
-                : players === 4
-                  ? <div className="flex justify-center items-center m-auto h-full">
+                : players === 4 &&
+                <div className="flex justify-center items-center m-auto h-full">
                 {(team1Turn || team2Turn || team3Turn || team4Turn) === false
                   ? <div>
                     <div>
@@ -183,7 +184,6 @@ const DiceRoll = () => {
                 </Link>
                 }
             </div>
-                  : <div>naw</div>
             }
         </>
   )

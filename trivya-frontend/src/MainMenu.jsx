@@ -44,16 +44,16 @@ function MainMenu () {
         <div className='pt-32'>
             <Logo></Logo>
             <div className='flex justify-center items-center m-auto w-11/12 sm:w-screen'>
-                <div className="grid grid-cols-3 gap-x-5 gap-y-3 place-items-center text-tertiary pt-14 w-screen">
+                 <div className="grid grid-cols-3 gap-x-5 gap-y-3 place-items-center text-tertiary pt-14 w-screen">
                     <button className="bg-primary rounded-lg cursor-pointer w-28 h-28 sm:w-40 sm:h-40">
-                        <Link to="/team-selection">
+                        <Link to="/number-of-teams">
                                 <FontAwesomeIcon icon={['fas', 'clock']} className='text-secondary text-4xl sm:text-5xl flex m-auto pb-3' />
                                 <p className='text-secondary text-md sm:text-xl font-medium font-secondary select-none'>Classic Mode</p>
                         </Link>
                     </button>
                     { isAdultMode &&
                     <button className="bg-primary rounded-lg cursor-pointer w-28 h-28 sm:w-40 sm:h-40">
-                        <Link to="/team-selection">
+                        <Link to="/number-of-teams">
                             <FontAwesomeIcon icon={['fas', 'champagne-glasses']} className='text-secondary text-4xl sm:text-5xl flex m-auto pb-3' />
                             <p className='text-secondary text-md sm:text-xl font-medium font-secondary select-none'>Adult Mode</p>
                         </Link>

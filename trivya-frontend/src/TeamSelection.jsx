@@ -35,6 +35,7 @@ const TeamSelection = () => {
 
   if (tempPlayers === 4) {
     // FIXME: Tailwind background-gradient limitation
+    // TODO: Perhaps try using custom CSS variables and Tailwind technique?
     document.querySelector('html').style =
             `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
             linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team4BackgroundColour} 50%, ${team4BackgroundColour} 100%);
@@ -216,7 +217,7 @@ const TeamSelection = () => {
     </div>
 
     <div className='absolute m-auto left-0 right-0 pt-0.5 bg-secondary w-80 h-9 rounded-br-xl rounded-bl-xl'>
-        <p className='text-primary text-center text-xl  px-3 rounded-br-xl rounded-bl-xl'>Tap on a team`&apos;s name to edit!</p>
+        <p className='text-primary text-center text-xl  px-3 rounded-br-xl rounded-bl-xl'>Tap on a team&apos;s name to edit!</p>
     </div>
 
     <div className='absolute bottom-0 left-0 right-0'>
