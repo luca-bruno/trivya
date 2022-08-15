@@ -44,6 +44,7 @@ const DiceRoll = () => {
       setDice3Side(rand3)
       setDice4Side(rand4)
       decideFirstTurn(rand1, rand2, rand3, rand4)
+      setHasRolled(false)
     }, 700)
   }
 
@@ -132,9 +133,9 @@ const DiceRoll = () => {
             { players === 2
               ? <div className="flex justify-center items-center m-auto h-full">
                 {(team1Turn || team2Turn) === false
-                  ? <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                  ? <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                   : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
-                    <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                    <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                 </Link>
                 }
             </div>
@@ -143,20 +144,20 @@ const DiceRoll = () => {
                 {(team1Turn || team2Turn || team3Turn) === false
                   ? <div>
                     <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                     <div className='flex justify-center'>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                 </div>
                   : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
                     <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                     <div className='flex justify-center'>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                 </Link>
             }
@@ -166,22 +167,22 @@ const DiceRoll = () => {
                 {(team1Turn || team2Turn || team3Turn || team4Turn) === false
                   ? <div>
                     <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                     <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice4Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice4Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                 </div>
                   : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
                     <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice4Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice4Side}`]} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
                     </div>
                 </Link>
                 }
