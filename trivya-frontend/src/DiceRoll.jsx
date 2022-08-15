@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import InstructionPrompt from './InstructionPrompt'
 
 const DiceRoll = () => {
   const [dice1Side, setDice1Side] = useState('')
@@ -107,20 +108,21 @@ const DiceRoll = () => {
   const isTrue = (element) => element === true
 
   const whichTeam = (teams) => {
-    return <div className='absolute m-auto left-0 right-0 pt-0.5 bg-secondary w-80 h-9 rounded-br-xl rounded-bl-xl'>
-                        <p className='text-primary text-center text-xl px-3 rounded-br-xl rounded-bl-xl'>
-                         { teams.findIndex(isTrue) !== -1
-                         //  FIXME: Replace with team stored in Redux
-                           ? `Team ${teams.findIndex(isTrue) + 1} begins!`
-                           : isRolling
-                             ? 'Rolling...'
-                             : (hasRolled && !hasTooManySixes && teams.findIndex(isTrue) === -1)
-                                 ? 'No six rolled - tap to roll again!'
-                                 : (hasTooManySixes && teams.findIndex(isTrue) === -1)
-                                     ? 'Too many sixes - tap to re-roll!'
-                                     : 'Tap on the dice to roll!' }
-                        </p>
-                    </div>
+    let text
+    if (teams.findIndex(isTrue) !== -1) {
+      //  FIXME: Replace with team stored in Redux
+      text = `Team ${teams.findIndex(isTrue) + 1} begins!`
+    } else if (isRolling) {
+      text = 'Rolling...'
+    } else if (hasRolled && !hasTooManySixes && teams.findIndex(isTrue) === -1) {
+      text = 'No six rolled - tap to roll again!'
+    } else if (hasTooManySixes && teams.findIndex(isTrue) === -1) {
+      text = 'Too many sixes - tap to re-roll!'
+    } else {
+      text = 'Tap on the dice to roll!'
+    }
+
+    return <InstructionPrompt text={text}/>
   }
 
   return (

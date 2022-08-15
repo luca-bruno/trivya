@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import InstructionPrompt from './InstructionPrompt'
 
 const TeamSelection = () => {
   // FIXME: Tailwind background-gradient limitation
@@ -216,9 +217,7 @@ const TeamSelection = () => {
         </div>
     </div>
 
-    <div className='absolute m-auto left-0 right-0 pt-0.5 bg-secondary w-80 h-9 rounded-br-xl rounded-bl-xl'>
-        <p className='text-primary text-center text-xl  px-3 rounded-br-xl rounded-bl-xl'>Tap on a team&apos;s name to edit!</p>
-    </div>
+    <InstructionPrompt text="Tap on a team&apos;s name to edit!"/>
 
     <div className='absolute bottom-0 left-0 right-0'>
         <div className='flex mb-2 justify-center items-center'>
