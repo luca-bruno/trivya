@@ -1,6 +1,6 @@
 # trivya
 
-To run ReactJS front-end (\trivya\trivya-frontend):
+To run ReactJS front-end (\trivya\trivya_frontend):
 <code>npm run dev</code>
 
 To run Elixir/Pheonix back-end (\trivya\trivya_backend):
