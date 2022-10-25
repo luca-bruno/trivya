@@ -9,3 +9,13 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias TrivyaApiserver.Repo
+alias TrivyaApiserver.Schemas.Question
+
+# Test seeds
+Repo.insert! %Question{
+  content: "Phoenix Framework",
+  content_in_maltese: "Bruh",
+  difficulty: "Hard"
+}
