@@ -12,9 +12,12 @@ function MainMenu () {
 
   // FIXME: Resets background colour
   useEffect(() => {
-    document.querySelector('html').style =
-            `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);`
-  }, [])
+    const e: (HTMLHtmlElement | null) = document.querySelector('html')
+
+    if(e !== null){
+        e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);`
+    }
+  }, [secondary])
 
   const { ipResponse } = useReactIpLocation()
 

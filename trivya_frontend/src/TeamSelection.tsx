@@ -37,24 +37,39 @@ const TeamSelection = () => {
   if (tempPlayers === 4) {
     // FIXME: Tailwind background-gradient limitation
     // TODO: Perhaps try using custom CSS variables and Tailwind technique?
-    document.querySelector('html').style =
-            `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
-            linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team4BackgroundColour} 50%, ${team4BackgroundColour} 100%);
-            background-size: 100% 50.1%;
-            background-position: center top, center bottom;
-            background-repeat: no-repeat;`
+
+    const e: (HTMLHtmlElement | null) = document.querySelector('html')
+
+    if(e !== null){
+        e.style.cssText = `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
+        linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team4BackgroundColour} 50%, ${team4BackgroundColour} 100%);
+        background-size: 100% 50.1%;
+        background-position: center top, center bottom;
+        background-repeat: no-repeat;`
+    }
+
   } else if (tempPlayers === 3) {
     // FIXME: Tailwind background-gradient limitation
-    document.querySelector('html').style =
-            `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
-            linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team3BackgroundColour} 50%, ${team3BackgroundColour} 100%);
-            background-size: 100% 50.1%;
-            background-position: center top, center bottom;
-            background-repeat: no-repeat;`
+
+
+    const e: (HTMLHtmlElement | null) = document.querySelector('html')
+
+    if(e !== null){
+        e.style.cssText = `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
+        linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team3BackgroundColour} 50%, ${team3BackgroundColour} 100%);
+        background-size: 100% 50.1%;
+        background-position: center top, center bottom;
+        background-repeat: no-repeat;`
+    }
+
   } else {
     // FIXME: Tailwind background-gradient limitation
-    document.querySelector('html').style =
-            `background: linear-gradient(180deg, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%);`
+
+    const e: (HTMLHtmlElement | null) = document.querySelector('html')
+
+    if(e !== null){
+        e.style.cssText = `background: linear-gradient(180deg, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%);`
+    }
   }
 
   const handleTeam1Name = (event) => {
@@ -167,10 +182,10 @@ const TeamSelection = () => {
   return (
     <>
     <form>
-        <input type="text" className={`${team1TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute lg:left-20 left-10 top-20`} maxLength="10" value={team1Name} onChange={handleTeam1Name} />
-        <input type="text" className={`${team2TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? 'lg:right-20 right-10 top-20' : 'lg:right-20 right-10 bottom-20'}`} maxLength="10" value={team2Name} onChange={handleTeam2Name} />
-        <input type="text" className={`${team3TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? 'visible' : 'hidden'} lg:left-20 left-10 bottom-20`} maxLength="10" value={team3Name} onChange={handleTeam3Name} />
-        <input type="text" className={`${team4TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers === 4 ? 'visible' : 'hidden'} lg:right-20 right-10 bottom-20`} maxLength="10" value={team4Name} onChange={handleTeam4Name} />
+        <input type="text" className={`${team1TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute lg:left-20 left-10 top-20`} maxLength={10} value={team1Name} onChange={handleTeam1Name} />
+        <input type="text" className={`${team2TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? 'lg:right-20 right-10 top-20' : 'lg:right-20 right-10 bottom-20'}`} maxLength={10} value={team2Name} onChange={handleTeam2Name} />
+        <input type="text" className={`${team3TextColour} w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers >= 3 ? 'visible' : 'hidden'} lg:left-20 left-10 bottom-20`} maxLength={10} value={team3Name} onChange={handleTeam3Name} />
+        <input type="text" className={`${team4TextColour} text-right w-36 bg-transparent border-transparent border-2 rounded-lg font-secondary text-2xl lg:text-5xl lg:w-64 absolute ${tempPlayers === 4 ? 'visible' : 'hidden'} lg:right-20 right-10 bottom-20`} maxLength={10} value={team4Name} onChange={handleTeam4Name} />
     </form>
 
     <div className='absolute top-40 left-6 flex-col'>

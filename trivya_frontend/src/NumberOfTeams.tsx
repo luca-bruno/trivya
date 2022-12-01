@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import InstructionPrompt from './InstructionPrompt'
 
 const NumberOfTeams = () => {
-  const [teamQuantitySelected, setTeamQuantitySelected] = useState('')
+  const [teamQuantitySelected, setTeamQuantitySelected] = useState(0)
 
   useEffect(() => {
     console.log(teamQuantitySelected)
