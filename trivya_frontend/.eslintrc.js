@@ -52,6 +52,7 @@ module.exports = {
     "max-len": [2, { code: 150, ignoreUrls: true }],
     "import/no-unresolved": "error",
     "linebreak-style": 0,
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "react/function-component-definition": "off"
   }
 }

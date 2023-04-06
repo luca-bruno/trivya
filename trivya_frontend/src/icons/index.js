@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core"
 import {
   fas,
   faDice,
@@ -16,7 +16,7 @@ import {
   faThumbsUp,
   faThumbsDown,
   faKey
-} from '@fortawesome/free-solid-svg-icons'
+} from "@fortawesome/free-solid-svg-icons"
 
 library.add(
   fas,

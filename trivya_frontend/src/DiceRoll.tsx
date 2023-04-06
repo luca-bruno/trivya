@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'react-router-dom'
-import InstructionPrompt from './InstructionPrompt'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import React, { useState, useEffect } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { Link, useNavigate } from "react-router-dom"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import InstructionPrompt from "./InstructionPrompt"
 
 const DiceRoll = () => {
-  const [dice1Side, setDice1Side] = useState('')
-  const [dice2Side, setDice2Side] = useState('')
-  const [dice3Side, setDice3Side] = useState('')
-  const [dice4Side, setDice4Side] = useState('')
+  const navigate = useNavigate()
+
+  const [dice1Side, setDice1Side] = useState("")
+  const [dice2Side, setDice2Side] = useState("")
+  const [dice3Side, setDice3Side] = useState("")
+  const [dice4Side, setDice4Side] = useState("")
   const [hasRolled, setHasRolled] = useState(false)
   const [isRolling, setIsRolling] = useState(false)
   const [hasTooManySixes, setHasTooManySixes] = useState(false)
@@ -17,7 +19,7 @@ const DiceRoll = () => {
   const [team3Turn, setTeam3Turn] = useState(false)
   const [team4Turn, setTeam4Turn] = useState(false)
 
-  const sides = ['one', 'two', 'three', 'four', 'five', 'six']
+  const sides = ["one", "two", "three", "four", "five", "six"]
 
   const players = 3
   // keep in global Redux state ^^^
@@ -28,11 +30,67 @@ const DiceRoll = () => {
   const rand4 = sides[Math.floor(Math.random() * sides.length)]
 
   useEffect(() => {
-    setDice1Side('five')
-    setDice2Side('five')
-    setDice3Side('five')
-    setDice4Side('five')
+    setDice1Side("five")
+    setDice2Side("five")
+    setDice3Side("five")
+    setDice4Side("five")
   }, [])
+
+  const decideFirstTurn = () => {
+    if (players === 2) {
+      if (rand1 % 2 === 0) {
+        setTeam2Turn(true)
+        console.log("team 2 turn")
+      } else {
+        setTeam1Turn(true)
+        console.log("team 1 turn")
+      }
+    } else if (players === 3) {
+      if ((rand1 === "six" && rand2 === "six") || (rand2 === "six" && rand3 === "six")
+                || (rand1 === "six" && rand3 === "six") || (rand1 === "six" && rand2 === "six" && rand3 === "six")) {
+        console.log("re roll too many sixes")
+        setHasTooManySixes(true)
+      } else if (rand1 === "six") {
+        setTeam1Turn(true)
+        console.log("team 1 turn")
+        // rollDice()
+      } else if (rand2 === "six") {
+        setTeam2Turn(true)
+        console.log("team 2 turn")
+      } else if (rand3 === "six") {
+        setTeam3Turn(true)
+        console.log("team 3 turn")
+      } else {
+        console.log("re roll bc no sixes")
+        // rollDice()
+        // SWAP THIS ELSE WITH FIRST CONDITION if possible
+      }
+    } else if (players === 4) {
+      if ((rand1 === "six" && rand2 === "six") || (rand2 === "six" && rand3 === "six")
+                || (rand3 === "six" && rand4 === "six") || (rand1 === "six" && rand3 === "six")
+                || (rand2 === "six" && rand4 === "six") || (rand1 === "six" && rand4 === "six")
+                || (rand1 === "six" && rand2 === "six" && rand3 === "six" && rand4 === "six")) {
+        console.log("re roll too many sixes")
+        setHasTooManySixes(true)
+      } else if (rand1 === "six") {
+        setTeam1Turn(true)
+        console.log("team 1 turn")
+        // rollDice()
+      } else if (rand2 === "six") {
+        setTeam2Turn(true)
+        console.log("team 2 turn")
+      } else if (rand3 === "six") {
+        setTeam3Turn(true)
+        console.log("team 3 turn")
+      } else if (rand4 === "six") {
+        setTeam4Turn(true)
+        console.log("team 4 turn")
+      } else {
+        console.log("re roll bc no sixes")
+        // rollDice()
+      }
+    }
+  }
 
   const rollDice = () => {
     setHasRolled(true)
@@ -47,62 +105,8 @@ const DiceRoll = () => {
       decideFirstTurn(rand1, rand2, rand3, rand4)
       setHasRolled(false)
     }, 700)
-  }
 
-  const decideFirstTurn = (rand1, rand2, rand3, rand4) => {
-    if (players === 2) {
-      if (rand1 % 2 === 0) {
-        setTeam2Turn(true)
-        console.log('team 2 turn')
-      } else {
-        setTeam1Turn(true)
-        console.log('team 1 turn')
-      }
-    } else if (players === 3) {
-      if ((rand1 === 'six' && rand2 === 'six') || (rand2 === 'six' && rand3 === 'six') ||
-                (rand1 === 'six' && rand3 === 'six') || (rand1 === 'six' && rand2 === 'six' && rand3 === 'six')) {
-        console.log('re roll too many sixes')
-        setHasTooManySixes(true)
-      } else if (rand1 === 'six') {
-        setTeam1Turn(true)
-        console.log('team 1 turn')
-        // rollDice()
-      } else if (rand2 === 'six') {
-        setTeam2Turn(true)
-        console.log('team 2 turn')
-      } else if (rand3 === 'six') {
-        setTeam3Turn(true)
-        console.log('team 3 turn')
-      } else {
-        console.log('re roll bc no sixes')
-        // rollDice()
-        // SWAP THIS ELSE WITH FIRST CONDITION if possible
-      }
-    } else if (players === 4) {
-      if ((rand1 === 'six' && rand2 === 'six') || (rand2 === 'six' && rand3 === 'six') ||
-                (rand3 === 'six' && rand4 === 'six') || (rand1 === 'six' && rand3 === 'six') ||
-                (rand2 === 'six' && rand4 === 'six') || (rand1 === 'six' && rand4 === 'six') ||
-                (rand1 === 'six' && rand2 === 'six' && rand3 === 'six' && rand4 === 'six')) {
-        console.log('re roll too many sixes')
-        setHasTooManySixes(true)
-      } else if (rand1 === 'six') {
-        setTeam1Turn(true)
-        console.log('team 1 turn')
-        // rollDice()
-      } else if (rand2 === 'six') {
-        setTeam2Turn(true)
-        console.log('team 2 turn')
-      } else if (rand3 === 'six') {
-        setTeam3Turn(true)
-        console.log('team 3 turn')
-      } else if (rand4 === 'six') {
-        setTeam4Turn(true)
-        console.log('team 4 turn')
-      } else {
-        console.log('re roll bc no sixes')
-        // rollDice()
-      }
-    }
+    navigate("../instructions")
   }
 
   const teamTurns = [team1Turn, team2Turn, team3Turn, team4Turn]
@@ -115,81 +119,110 @@ const DiceRoll = () => {
       //  FIXME: Replace with team stored in Redux
       text = `Team ${teams.findIndex(isTrue) + 1} begins!`
     } else if (isRolling) {
-      text = 'Rolling...'
+      text = "Rolling..."
     } else if (hasRolled && !hasTooManySixes && teams.findIndex(isTrue) === -1) {
-      text = 'No six rolled - tap to roll again!'
+      text = "No six rolled - tap to roll again!"
     } else if (hasTooManySixes && teams.findIndex(isTrue) === -1) {
-      text = 'Too many sixes - tap to re-roll!'
+      text = "Too many sixes - tap to re-roll!"
     } else {
-      text = 'Tap on the dice to roll!'
+      text = "Tap on the dice to roll!"
     }
 
-    return <InstructionPrompt text={text}/>
+    return <InstructionPrompt text={text} />
   }
 
   return (
-        <>
-        { whichTeam(teamTurns.map(team => team)) }
+    <>
+      { whichTeam(teamTurns.map((team) => team)) }
 
-            { players === 2
-              ? <div className="flex justify-center items-center m-auto h-full">
-                {(team1Turn || team2Turn) === false
-                  ? <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                  : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
-                    <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+      { players === 2
+        ? (
+          <div className="flex justify-center items-center m-auto h-full">
+            {(team1Turn || team2Turn) === false
+              ? (
+                <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp}
+                  className={`text-7xl text-primary ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+              )
+              : (
+                <Link to="/quiz" className={isRolling ? "pointer-events-none" : ""}>
+                  <FontAwesomeIcon icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
                 </Link>
-                }
-            </div>
-              : players === 3
-                ? <div className="flex justify-center items-center m-auto h-full">
-                {(team1Turn || team2Turn || team3Turn) === false
-                  ? <div>
+              )}
+          </div>
+        )
+        : players === 3
+          ? (
+            <div className="flex justify-center items-center m-auto h-full">
+              {(team1Turn || team2Turn || team3Turn) === false
+                ? (
+                  <div>
                     <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                      <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                      <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice2Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
                     </div>
-                    <div className='flex justify-center'>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                    <div className="flex justify-center">
+                      <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice3Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
                     </div>
-                </div>
-                  : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
+                  </div>
+                )
+                : (
+                  <Link to="/quiz" className={isRolling ? "pointer-events-none" : ""}>
                     <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                      <FontAwesomeIcon icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                      <FontAwesomeIcon icon={["fas", `fa-dice-${dice2Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
                     </div>
-                    <div className='flex justify-center'>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
+                    <div className="flex justify-center">
+                      <FontAwesomeIcon icon={["fas", `fa-dice-${dice3Side}`] as unknown as IconProp}
+                        className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
                     </div>
-                </Link>
-            }
+                  </Link>
+                )}
             </div>
-                : players === 4 &&
+          )
+          : players === 4
+                && (
                 <div className="flex justify-center items-center m-auto h-full">
-                {(team1Turn || team2Turn || team3Turn || team4Turn) === false
-                  ? <div>
-                    <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice2Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                    </div>
-                    <div>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice3Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon onClick={rollDice} icon={['fas', `fa-dice-${dice4Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                    </div>
+                  {(team1Turn || team2Turn || team3Turn || team4Turn) === false
+                    ? (
+                      <div>
+                        <div>
+                          <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                          <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice2Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                        </div>
+                        <div>
+                          <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice3Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                          <FontAwesomeIcon onClick={rollDice} icon={["fas", `fa-dice-${dice4Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                        </div>
+                      </div>
+                    )
+                    : (
+                      <Link to="/quiz" className={isRolling ? "pointer-events-none" : ""}>
+                        <div>
+                          <FontAwesomeIcon icon={["fas", `fa-dice-${dice1Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                          <FontAwesomeIcon icon={["fas", `fa-dice-${dice2Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                        </div>
+                        <div>
+                          <FontAwesomeIcon icon={["fas", `fa-dice-${dice3Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                          <FontAwesomeIcon icon={["fas", `fa-dice-${dice4Side}`] as unknown as IconProp}
+                            className={`text-7xl text-primary m-5 ${hasRolled ? "animate-spin-slow" : ""} ${isRolling ? "pointer-events-none animate-spin-slow" : ""}`} />
+                        </div>
+                      </Link>
+                    )}
                 </div>
-                  : <Link to="/quiz" className={isRolling ? 'pointer-events-none' : ''}>
-                    <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice1Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice2Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                    </div>
-                    <div>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice3Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                        <FontAwesomeIcon icon={['fas', `fa-dice-${dice4Side}`] as unknown as IconProp} className={`text-7xl text-primary m-5 ${hasRolled ? 'animate-spin-slow' : ''} ${isRolling ? 'pointer-events-none animate-spin-slow' : ''}`}/>
-                    </div>
-                </Link>
-                }
-            </div>
-            }
-        </>
+                )}
+    </>
   )
 }
 
