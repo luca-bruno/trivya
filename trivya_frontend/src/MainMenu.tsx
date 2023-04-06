@@ -65,7 +65,7 @@ const MainMenu = () => {
           </button>
           )}
           <button type="button" aria-label="Custom Mode" className="bg-primary rounded-lg cursor-pointer w-28 h-28 sm:w-40 sm:h-40">
-            <Link to="/customMode">
+            <Link to="/custom-mode">
               <FontAwesomeIcon icon={["fas", "sliders"]} className="text-secondary text-4xl sm:text-5xl flex m-auto pb-3" />
               <p className="text-secondary text-md sm:text-xl font-medium font-secondary select-none">Custom Mode</p>
             </Link>
@@ -77,7 +77,7 @@ const MainMenu = () => {
             </Link>
           </button>
           { isMaltaDisplayed && (
-          <button type="button" onClick={() => toggleMaltaMode()}
+          <button type="button" aria-label="Toggle Maltese questions" onClick={() => toggleMaltaMode()}
             className="cursor-pointer absolute right-logo-spacing sm:right-20 top-1 pt-2 z-20 select-none">
             { isMaltaMode
               ? (
@@ -92,7 +92,8 @@ const MainMenu = () => {
               )}
           </button>
           )}
-          <button type="button" onClick={() => toggleAdultMode()} className="cursor-pointer absolute right-0 sm:right-3 top-1 pt-1 select-none">
+          <button type="button" aria-label="Toggle 18+" onClick={() => toggleAdultMode()}
+            className="cursor-pointer absolute right-0 sm:right-3 top-1 pt-1 select-none">
             <p className={`${!isAdultMode ? "text-secondary" : "text-primary"} text-3xl font-bold absolute right-5 top-2 pt-1 z-10`}>18</p>
             { isAdultMode
               ? <FontAwesomeIcon icon={["fas", "ban"]} className="text-red text-5xl absolute right-3 top-1 pt-1 z-20" />
@@ -111,13 +112,13 @@ const MainMenu = () => {
                 questions to be included?
               </p>
               <div className="flex flex-col">
-                <button type="button" aria-label="Yes"
+                <button type="button" aria-label="Accept Maltese Questions"
                   onClick={() => { setModalDisplayed(false); setMaltaDisplayed(true); setMaltaMode(true) }}
                   className="w-full rounded-lg text-primary bg-secondary ml-1 p-1 my-1">
                   Yes
                   <FontAwesomeIcon icon={["fas", "thumbs-up"]} className="pl-2" />
                 </button>
-                <button type="button" aria-label="No"
+                <button type="button" aria-label="Decline Maltese Questions"
                   onClick={() => { setModalDisplayed(false); setMaltaDisplayed(false) }}
                   className="w-full rounded-lg text-primary bg-secondary ml-1 p-1">
                   No

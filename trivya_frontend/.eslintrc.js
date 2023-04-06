@@ -53,6 +53,7 @@ module.exports = {
     "import/no-unresolved": "error",
     "linebreak-style": 0,
     "import/extensions": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off"
   }
 }
