@@ -3,12 +3,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import useReactIpLocation from "react-ip-details"
 import { CircleFlag } from "react-circle-flags"
+import { useGetPokemonByName2Query } from "./services/test2"
 import Logo from "./Logo"
+import { useGetPokemonByNameQuery } from "./services/test"
 
 const MainMenu = () => {
   // FIXME: Tailwind background-gradient limitation
   // FIXME: Redundant colour codes same as in tailwind.config.js - required because
   // direct styling of html selector does not support custom colours
+  const { data, error, isSuccess } = useGetPokemonByNameQuery("bulbasaur")
+  const { data: data2, isSuccess: isSuccess2 } = useGetPokemonByName2Query("absol")
+
+  if (isSuccess) {
+    console.log(data)
+  }
+
+  if (isSuccess2) {
+    console.log(data2)
+  }
 
   const secondary = "#0F4C81"
 
