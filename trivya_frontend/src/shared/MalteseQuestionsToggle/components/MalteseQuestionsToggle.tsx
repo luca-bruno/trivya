@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { CircleFlag } from "react-circle-flags"
 
 const MalteseQuestionsToggle = () => {
-  const [isMaltaMode, setMaltaMode] = useState(false)
+  const [isMaltaMode, setMaltaMode] = useState(true)
 
   // TODO: move to context
   const toggleMaltaMode = () => {
