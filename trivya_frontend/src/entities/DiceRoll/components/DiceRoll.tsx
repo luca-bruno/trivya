@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link, useNavigate } from "react-router-dom"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import InstructionPrompt from "./InstructionPrompt"
+import { InstructionPrompt } from "@shared/InstructionPrompt"
 
 const DiceRoll = () => {
   const navigate = useNavigate()
@@ -111,9 +111,9 @@ const DiceRoll = () => {
 
   const teamTurns = [team1Turn, team2Turn, team3Turn, team4Turn]
 
-  const isTrue = (element) => element === true
+  const isTrue = element => element === true
 
-  const whichTeam = (teams) => {
+  const whichTeam = teams => {
     let text
     if (teams.findIndex(isTrue) !== -1) {
       //  FIXME: Replace with team stored in Redux
@@ -133,7 +133,7 @@ const DiceRoll = () => {
 
   return (
     <>
-      { whichTeam(teamTurns.map((team) => team)) }
+      { whichTeam(teamTurns.map(team => team)) }
 
       { players === 2
         ? (

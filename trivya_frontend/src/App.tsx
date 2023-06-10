@@ -5,12 +5,12 @@ import {
   Route
 } from "react-router-dom"
 import "./icons"
-import MainMenu from "./MainMenu"
-import DiceRoll from "./DiceRoll"
-import NumberOfTeams from "./NumberOfTeams"
-import TeamSelection from "./TeamSelection"
-import Admin from "./Admin"
-import Instructions from "./Instructions"
+import { Admin } from "@entities/Admin"
+import { DiceRoll } from "@entities/DiceRoll"
+import { Instructions } from "@entities/Instructions"
+import { MainMenu } from "@entities/MainMenu"
+import { NumberOfTeams } from "@entities/NumberOfTeams"
+import { TeamSelection } from "@entities/TeamSelection"
 
 const App = () => (
   // FIXME: Tailwind background-gradient limitation

@@ -2,7 +2,8 @@ import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Link } from "react-router-dom"
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons"
-import InstructionPrompt from "./InstructionPrompt"
+import { InstructionPrompt } from "@shared/InstructionPrompt"
+import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGradient"
 
 const TeamSelection = () => {
   // FIXME: Tailwind background-gradient limitation
@@ -38,44 +39,13 @@ const TeamSelection = () => {
   const [team3BackgroundColour, setTeam3BackgroundColour] = useState(secondary)
   const [team4BackgroundColour, setTeam4BackgroundColour] = useState(secondary)
 
-  if (tempPlayers === 4) {
-    // FIXME: Tailwind background-gradient limitation
-    // TODO: Perhaps try using custom CSS variables and Tailwind technique?
-
-    const e: (HTMLHtmlElement | null) = document.querySelector("html")
-
-    if (e !== null) {
-      e.style.cssText = `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, 
-        ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
-        linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team4BackgroundColour} 50%, 
-          ${team4BackgroundColour} 100%);
-        background-size: 100% 50.1%;
-        background-position: center top, center bottom;
-        background-repeat: no-repeat;`
-    }
-  } else if (tempPlayers === 3) {
-    // FIXME: Tailwind background-gradient limitation
-
-    const e: (HTMLHtmlElement | null) = document.querySelector("html")
-
-    if (e !== null) {
-      e.style.cssText = `background: linear-gradient(to right, ${team1BackgroundColour} 0%, ${team1BackgroundColour} 50%, 
-        ${team2BackgroundColour} 50%, ${team2BackgroundColour} 100%), 
-        linear-gradient(to right, ${team3BackgroundColour} 0%, ${team3BackgroundColour} 50%, ${team3BackgroundColour} 50%, 
-          ${team3BackgroundColour} 100%);
-        background-size: 100% 50.1%;
-        background-position: center top, center bottom;
-        background-repeat: no-repeat;`
-    }
-  } else {
-    // FIXME: Tailwind background-gradient limitation
-
-    const e: (HTMLHtmlElement | null) = document.querySelector("html")
-
-    if (e !== null) {
-      e.style.cssText = `background: linear-gradient(180deg, ${team1BackgroundColour} 50%, ${team2BackgroundColour} 50%);`
-    }
-  }
+  useBackgroundGradient({
+    numberOfTeams: tempPlayers,
+    team1BackgroundColour,
+    team2BackgroundColour,
+    team3BackgroundColour,
+    team4BackgroundColour
+  })
 
   const handleTeam1Name = (event: eventType) => {
     setTeam1Name(event.target.value)

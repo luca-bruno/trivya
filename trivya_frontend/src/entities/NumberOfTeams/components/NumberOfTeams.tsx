@@ -1,6 +1,6 @@
+import { InstructionPrompt } from "@shared/InstructionPrompt"
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import InstructionPrompt from "./InstructionPrompt"
 
 const NumberOfTeams = () => {
   const [teamQuantitySelected, setTeamQuantitySelected] = useState(0)
