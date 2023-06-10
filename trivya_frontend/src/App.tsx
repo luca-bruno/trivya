@@ -13,12 +13,6 @@ import { NumberOfTeams } from "@entities/NumberOfTeams"
 import { TeamSelection } from "@entities/TeamSelection"
 
 const App = () => (
-  // FIXME: Tailwind background-gradient limitation
-  // FIXME: Redundant colour codes same as in tailwind.config.js - required because direct
-  // styling of html selector does not support custom colours
-
-  // const secondary = '#0F4C81'
-
   <div className="h-screen">
     <BrowserRouter>
       <Routes>

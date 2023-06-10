@@ -14,6 +14,22 @@ const useBackgroundGradient = ({
       case 1:
         if (e !== null) {
           e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);`
+
+          // temp solution for circle in bg
+          // e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);
+          // background-image: radial-gradient(circle at center top, rgba(${parseInt(secondary.slice(1, 3), 16)},
+          //  ${parseInt(secondary.slice(3, 5), 16)}, ${parseInt(secondary.slice(5, 7), 16)}, 0.9) 50%, ${secondary} 50%);
+          // background-size: 100% 100%, 100% 100%;
+          // background-position: center top, center bottom;
+          // background-repeat: no-repeat;`
+
+          // temp solution for gradient in bg
+          // e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);
+          // background-image: radial-gradient(circle at center top, rgba(${parseInt(secondary.slice(1, 3), 16)},
+          //  ${parseInt(secondary.slice(3, 5), 16)}, ${parseInt(secondary.slice(5, 7), 16)}, 0.9) 70%, ${secondary} 30%);
+          // background-size: 100% 100%, 100% 100%;
+          // background-position: center top, center bottom;
+          // background-repeat: no-repeat;`
         }
         break
 

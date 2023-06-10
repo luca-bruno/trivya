@@ -5,7 +5,7 @@ import MaltaLocationDialogTypes from "../types/MaltaLocationDialogTypes.interfac
 const MaltaLocationDialog: React.FC<MaltaLocationDialogTypes> = ({ handleAccept, handleDecline }) => (
   <div className="absolute bottom-0 left-0 right-0 flex m-auto items-center pt-0.5 bg-primary w-72 h-24 rounded-tr-xl rounded-tl-xl">
     <p className="flex text-secondary text-md sm:text-xl text-left px-3 pt-1">
-      Joining from Malta?
+      Joining from Malta? 🇲🇹
       <br />
       Would you like for Malta
       <br />
