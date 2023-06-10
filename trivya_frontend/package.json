@@ -26,11 +26,12 @@
     "react-router-dom": "^6.10.0",
     "swiper": "^8.4.5",
     "tsc": "^2.0.4",
-    "typescript": "^5.0.3"
+    "typescript": "^5.0.3",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.9",
+    "@types/react": "^18.2.9",
+    "@types/react-dom": "^18.2.4",
     "@types/react-router-dom": "^5.3.3",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",

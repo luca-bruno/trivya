@@ -54,6 +54,8 @@ module.exports = {
     "linebreak-style": 0,
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
-    "react/function-component-definition": "off"
+    "react/function-component-definition": "off",
+    "arrow-parens": ["error", "as-needed"],
+    "operator-linebreak": "off"
   }
 }
