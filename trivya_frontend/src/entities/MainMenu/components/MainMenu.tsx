@@ -6,21 +6,8 @@ import { MenuButton } from "@shared/MenuButton"
 import mainMenuButtons from "@shared/MenuButton/data/data"
 import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGradient"
 import MaltaLocationDialogContainer from "@shared/MaltaLocationDialog/containers/MaltaLocationDialogContainer"
-// import { useGetPokemonByName2Query } from "./services/test2"
-// import { useGetPokemonByNameQuery } from "./services/test"
 
 const MainMenu = () => {
-  // const { data, error, isSuccess } = useGetPokemonByNameQuery("bulbasaur")
-  // const { data: data2, isSuccess: isSuccess2 } = useGetPokemonByName2Query("absol")
-
-  // if (isSuccess) {
-  //   console.log(data)
-  // }
-
-  // if (isSuccess2) {
-  //   console.log(data2)
-  // }
-
   useBackgroundGradient({ numberOfTeams: 1 })
 
   const [isMaltaDisplayed, setMaltaDisplayed] = useState(false)

@@ -10,6 +10,7 @@ export default defineConfig({
       "@components": "/src/components",
       "@entities": "/src/entities",
       "@hooks": "/src/hooks",
+      "@services": "/src/services",
       "@shared": "/src/shared",
       "@utils": "/src/utils"
     }

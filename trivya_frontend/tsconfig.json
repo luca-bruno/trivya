@@ -38,6 +38,7 @@
       "@components/*": ["components/*"],
       "@entities/*": ["entities/*"],
       "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"],
       "@shared/*": ["shared/*"],
       "@utils/*": ["utils/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
