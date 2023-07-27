@@ -1,6 +1,6 @@
 interface MaltaLocationDialogTypes {
-    handleAccept: () => void
-    handleDecline: () => void
+    acceptMalteseQuestions: () => void
+    declineMalteseQuestions: () => void
 }
 
 export default MaltaLocationDialogTypes

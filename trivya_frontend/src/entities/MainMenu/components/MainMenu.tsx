@@ -24,7 +24,7 @@ const MainMenu = () => {
       <Logo />
 
       <div className="flex justify-center items-center m-auto w-11/12 sm:w-screen">
-        <div className="grid grid-cols-3 gap-x-5 gap-y-3 place-items-center text-tertiary pt-14 w-screen">
+        <div className="grid grid-cols-2 xs:grid-cols-3 lg:grid-cols-3 gap-x-5 lg:gap-x-8 gap-y-3 lg:gap-y-10 place-items-center pt-14 w-screen">
           { mainMenuButtons(isAdultMode).map(button => <MenuButton key={button.key} button={button} />) }
 
           { isMaltaDisplayed && <MalteseQuestionsToggle /> }

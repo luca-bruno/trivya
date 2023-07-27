@@ -4,6 +4,14 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}"
   ],
   theme: {
+    screens: {
+      "2xs": "320px",
+      xs: "425px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1440px",
+      "2xl": "2560px"
+    },
     extend: {
       fontFamily: {
         primary: ["Righteous", "sans-serif"],
@@ -17,9 +25,6 @@ module.exports = {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(720deg)" }
         }
-      },
-      spacing: {
-        "logo-spacing": "4.5rem"
       }
     },
     colors: {

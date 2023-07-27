@@ -3,7 +3,7 @@ interface MenuButtonDetailsTypes {
   url: string
   icon: string
   label: string
-  condition?: boolean
+  displayCondition?: boolean
 }
 
 interface MenuButtonTypes {

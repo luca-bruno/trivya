@@ -7,15 +7,15 @@ const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> 
   const [isMaltaLocation, setMaltaLocation] = useState(false)
   const [isModalDisplayed, setModalDisplayed] = useState(false)
 
-  const { ipResponse } = useReactIpLocation()
-  const { country_name: countryName } = ipResponse || ""
+  const { userIpLocation } = useReactIpLocation()
+  const { country_name: countryName } = userIpLocation || ""
 
-  const handleAccept = () => {
+  const acceptMalteseQuestions = () => {
     setModalDisplayed(false)
     setMaltaDisplayed(true)
   }
 
-  const handleDecline = () => {
+  const declineMalteseQuestions = () => {
     setModalDisplayed(false)
     setMaltaDisplayed(false)
   }
@@ -29,7 +29,7 @@ const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> 
   }, [countryName, setMaltaLocation, setModalDisplayed])
 
   return (
-    isMaltaLocation && isModalDisplayed && <MaltaLocationDialog {...{ handleAccept, handleDecline }} />
+    isMaltaLocation && isModalDisplayed && <MaltaLocationDialog {...{ acceptMalteseQuestions, declineMalteseQuestions }} />
   )
 }
 

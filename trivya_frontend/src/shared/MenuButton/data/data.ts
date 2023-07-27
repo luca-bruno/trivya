@@ -4,28 +4,28 @@ const mainMenuButtons = (isAdultMode: boolean) => [
     url: "/number-of-teams",
     icon: "clock",
     label: "Classic Mode",
-    condition: true
+    displayCondition: true
   },
   {
     key: 1,
     url: "/number-of-teams",
     icon: "champagne-glasses",
     label: "Adult Mode",
-    condition: isAdultMode && isAdultMode
+    displayCondition: isAdultMode && isAdultMode
   },
   {
     key: 2,
     url: "/custom-mode",
     icon: "sliders",
     label: "Custom Mode",
-    condition: true
+    displayCondition: true
   },
   {
     key: 3,
     url: "/admin",
     icon: "key",
     label: "Admin",
-    condition: true
+    displayCondition: true
   }
 ]
 

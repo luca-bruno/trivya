@@ -47,6 +47,8 @@ module.exports = {
     "react/jsx-filename-extension": [2, { extensions: [".js", ".jsx", ".ts", ".tsx"] }],
     "react/jsx-first-prop-new-line": "off",
     "react/jsx-max-props-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    "react/jsx-curly-newline": "off",
     "comma-dangle": [2, "never"],
     "react/jsx-closing-bracket-location": "off",
     "max-len": [2, { code: 150, ignoreUrls: true }],
@@ -56,6 +58,7 @@ module.exports = {
     "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
     "arrow-parens": ["error", "as-needed"],
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "object-curly-newline": "off"
   }
 }
