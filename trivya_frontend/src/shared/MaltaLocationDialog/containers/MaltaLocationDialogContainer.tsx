@@ -7,7 +7,7 @@ const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> 
   const [isMaltaLocation, setMaltaLocation] = useState(false)
   const [isModalDisplayed, setModalDisplayed] = useState(false)
 
-  const { userIpLocation } = useReactIpLocation()
+  const { ipResponse: userIpLocation } = useReactIpLocation()
   const { country_name: countryName } = userIpLocation || ""
 
   const acceptMalteseQuestions = () => {

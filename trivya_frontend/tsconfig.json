@@ -36,6 +36,7 @@
     "baseUrl": "./src",                                  /* Specify the base directory to resolve non-relative module names. */
     "paths": {
       "@components/*": ["components/*"],
+      "@contexts/*": ["contexts/*"],
       "@entities/*": ["entities/*"],
       "@hooks/*": ["hooks/*"],
       "@services/*": ["services/*"],

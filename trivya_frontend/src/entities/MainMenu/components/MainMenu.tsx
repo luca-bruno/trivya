@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import AdultModeToggle from "@shared/AdultModeToggle/components/AdultModeToggle"
 import { Logo } from "@shared/Logo"
 import { MalteseQuestionsToggle } from "@shared/MalteseQuestionsToggle"
@@ -6,13 +6,14 @@ import { MenuButton } from "@shared/MenuButton"
 import mainMenuButtons from "@shared/MenuButton/data/data"
 import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGradient"
 import MaltaLocationDialogContainer from "@shared/MaltaLocationDialog/containers/MaltaLocationDialogContainer"
+import { AdultModeContext } from "@contexts/AdultModeContext"
 
 const MainMenu = () => {
   useBackgroundGradient({ numberOfTeams: 1 })
 
   const [isMaltaDisplayed, setMaltaDisplayed] = useState(false)
 
-  const [isAdultMode, setAdultMode] = useState(false)
+  const [isAdultMode, setAdultMode] = useContext(AdultModeContext)
 
   // TODO: move to context
   const toggleAdultMode = () => {
