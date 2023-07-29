@@ -1,11 +1,14 @@
 import useReactIpLocation from "react-ip-details"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { MaltaLocationDialog } from "@shared/MaltaLocationDialog"
+import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext"
 import MaltaLocationDialogContainerTypes from "../types/MaltaLocationDialogContainer.interface"
 
 const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> = ({ setMaltaDisplayed }) => {
   const [isMaltaLocation, setMaltaLocation] = useState(false)
   const [isModalDisplayed, setModalDisplayed] = useState(false)
+
+  const { setDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
 
   const { ipResponse: userIpLocation } = useReactIpLocation()
   const { country_name: countryName } = userIpLocation || ""
@@ -13,6 +16,7 @@ const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> 
   const acceptMalteseQuestions = () => {
     setModalDisplayed(false)
     setMaltaDisplayed(true)
+    setDisplayingMalteseQuestions(true)
   }
 
   const declineMalteseQuestions = () => {

@@ -13,7 +13,7 @@ const MainMenu = () => {
 
   const [isMaltaDisplayed, setMaltaDisplayed] = useState(false)
 
-  const [isAdultMode, setAdultMode] = useContext(AdultModeContext)
+  const { isAdultMode, setAdultMode } = useContext(AdultModeContext)
 
   // TODO: move to context
   const toggleAdultMode = () => {

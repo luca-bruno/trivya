@@ -5,7 +5,7 @@ import { CircleFlag } from "react-circle-flags"
 const MalteseQuestionsToggle = () => {
   const flag = <CircleFlag countryCode="mt" className="w-12 xl:w-20 h-12 xl:h-20" />
 
-  const [isDisplayingMalteseQuestions, setDisplayingMalteseQuestions] = useContext(MalteseQuestionsContext)
+  const { isDisplayingMalteseQuestions, setDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
 
   const toggleDisplayingMalteseQuestions = () => {
     setDisplayingMalteseQuestions(prev => !prev)

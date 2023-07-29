@@ -1,13 +1,26 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useMemo, useState } from "react"
 
-export const AdultModeContext = createContext(false)
+interface AdultModeContextValue {
+  isAdultMode: boolean
+  setAdultMode: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export const AdultModeContextProvider = props => {
+export const AdultModeContext = createContext<AdultModeContextValue>({
+  isAdultMode: false,
+  setAdultMode: () => undefined
+})
+
+export const AdultModeContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAdultMode, setAdultMode] = useState(false)
 
+  const contextValue: AdultModeContextValue = useMemo(() => ({
+    isAdultMode,
+    setAdultMode
+  }), [isAdultMode])
+
   return (
-    <AdultModeContext.Provider value={[isAdultMode, setAdultMode]}>
-      {props.children}
+    <AdultModeContext.Provider value={contextValue}>
+      { children }
     </AdultModeContext.Provider>
   )
 }
