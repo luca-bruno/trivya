@@ -25,10 +25,11 @@ Powered by:
 <a href="#"><img title="Ecto" src="https://img.shields.io/badge/ecto-78C041.svg?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAPCAQAAACVKo38AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAAAd0SU1FB+cHCQ41MIbLzRAAAANYelRYdFJhdyBwcm9maWxlIHR5cGUgeG1wAABIicVWQXLbMAy88xV9AgWQgPgc2ZRunemxz+8uKNuKbCdpL3Vm5JgClgtgATL9/vkr/cBn0qkkverms2ebTO1i1YtkE6vm1mzVLrJul8tlE8F6s8KV6lpL11y656Kwna2lMvvicKzqS1lrMXwDUBVOIrrpKlmvPuvis8HROjezSTJ/29VWV75L3AFsim3koct4cTcPJg8YrF3oUe4ekutces1JSG7zWNIqq5p08Jm0KFdcG9YmxRJWGn5dsSqasTbLhm8+J9UkPcwWmGU8RcHg9Cd7eAIWsKxSSrFTaJLiJcObveAPYAhn8/jI6rCSNRh77NyCFZkInty2jw3AyNVRH2bEZ4SFHfj+IwtQQKlQCLEWmWrIECxu721KSNjmSCxZjcQeCNPBXjGO7dZHkWRNUM9mHcHsTgwA6c23eh1LzLq9A01H1DvojDDze0h46BkwwS0jNLHrI6k0xLPCsVJRzCB2HcDTC67Z5mQMakMiZzzfEn/JO4fP7k2gT4IYeSkdnfXFFumz3ACwvwBXL6W6jUrfwNOXAZzA2fgOLcFmqxLqonyE5a/EHymlFCXf9bMUpr+NdwDchUgmAN6ZMtSiie0aJrUM0xpmbEtBe2DqQM58tlr2rqzRlXjKJawWPNH9R9xuLD3YePsLWORNpwSKB9wTbMwkG5DT59DpGfsZOpS8IGnMWCdc1Kvxf4zkSk0lW6Fl8vggrxDnwpGHosN9D3qw0Vf2KRxa4UDkUNiwb2Nr0AWlFogEbrAAcfDmRDJOUaCtx8qlUC2gqKTIyBqCQLIDKoygqhYnCMOjUJiKHGO2K3jSg6MWGyvblBFjdiHmzm+uhYPFfxqtfGewE6CA1dHaaYjtiUH5isGZQPpLBkPpcXjC/fo/GN1O2gMrHNBRGLDzdjsk0n5WYQ+fPp4cEEFDYI+hsfB+cGxcKGiKdodC0sn0n2WQ3sX8jSIcCLgnyLvuE+YbPf6ixXe4FHjsKSC7I2bMpxKtyGo+3TyeOpKXkKKC7h83C6RV5jr0QTMc+tLOARidmT1uM85mTvS4Q+HGJtv9nnGoXUzrT0v+8OPNID1fDc5m4xrzgD/f3cab9OIGWRleFF3G5S/9Ae+MaD0uI05pAAAA+klEQVQY012QzyuDAQCGn+9jWWatUYrL3G3l5ugkpFzk4B9RdtX+BxfK1ZWU4iDlsAPFnJRajANZ+8E+kz0O8/u5vm+9b08AIECSHKNEXHPFGwTdQJxy10cjny274bjdujjvrb85MyuIGc/9z5Z9iCt2VG174pEtVW/M4oCHqnZcN23Sgu9qy8WQYcYAqLFJlQZ7REAPiZB+4gA8UQEGWSAOtHno5YUIgICAOfJMEgKXnP5sVZ32+PNfw2UJabKPQIoZKgDUWWMbAiHDDjngngIp0hxwwRClMIAyq1SAEfIkKFJjglnCvw5fbVp0yZgxvwR/m69T4g4APgD7GbdXe9UEFgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMy0wNy0wOVQxNDo1Mzo0NyswMDowMCSa4vIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjMtMDctMDlUMTQ6NTM6NDcrMDA6MDBVx1pOAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTA3LTA5VDE0OjUzOjQ4KzAwOjAw9JoLeAAAAABJRU5ErkJggg=="></a>
 <a href="#"><img title="Node.js" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white"></a>
 <a href="#"><img title="Express.js" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"></a>
+<a href="#"><img title="JWT" src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens"></a>
 <a href="#"><img title="PostgreSQL" src="https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white"></a>
 
 To run React front-end (\trivya\trivya_frontend):
-<code>vite dev</code>
+<code>yarn dev</code>
 
-To run <strike>Elixir/Pheonix</strike> <strong>(TBA!)</strong> back-end (\trivya\trivya_apiserver):
-<strike><code>iex.bat -S mix phx.server</code></strike>
+To run Node.js back-end (\trivya\trivya_apiserver):
+<code>yarn dev</code>
