@@ -1,18 +1,15 @@
 import colors from "tailwindcss/colors"
 
-export const content = [
-  "./index.html",
-  "./src/**/*.{vue,js,ts,jsx,tsx}"
-]
+export const content = ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"]
 export const theme = {
   screens: {
-    "2xs": "320px",
-    xs: "375px",
-    sm: "425px",
-    md: "768px",
-    lg: "1024px",
-    xl: "1440px",
-    "2xl": "2560px"
+    mobileS: "320px",
+    mobileM: "375px",
+    mobileL: "425px",
+    tablet: "768px",
+    laptop: "1024px",
+    laptopL: "1440px",
+    "4K": "2560px"
   },
   extend: {
     fontFamily: {

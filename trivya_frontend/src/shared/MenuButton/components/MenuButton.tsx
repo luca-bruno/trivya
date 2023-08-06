@@ -12,13 +12,11 @@ const MenuButton: React.FC<MenuButtonTypes> = ({ button }) => {
       <button
         type="button"
         aria-label={label}
-        className="bg-primary rounded-lg cursor-pointer
-          w-full sm:w-28 md:w-56 lg:w-80 xl:w-[25rem]
-          h-28 sm:h-28 lg:h-40 xl:h-44"
+        className="bg-primary rounded-lg cursor-pointer w-full laptopL:w-[25rem] h-28 mobileL:h-28 laptop:h-40 laptopL:h-44"
       >
         <Link to={url}>
-          <FontAwesomeIcon icon={["fas", icon as IconName]} className="text-secondary text-4xl sm:text-5xl xl:text-6xl flex m-auto pb-3" />
-          <p className="text-secondary text-md sm:text-xl lg:text-2xl xl:text-3xl font-medium font-secondary select-none">{label}</p>
+          <FontAwesomeIcon icon={["fas", icon as IconName]} className="text-secondary text-4xl laptop:text-5xl laptopL:text-6xl flex m-auto pb-3" />
+          <p className="text-secondary text-md laptop:text-2xl laptopL:text-3xl font-medium font-secondary select-none">{label}</p>
         </Link>
       </button>
     )

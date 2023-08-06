@@ -11,7 +11,7 @@ const MaltaLocationDialogButton: React.FC<MaltaLocationDialogButtonTypes> = ({ b
       type="button"
       aria-label={label}
       onClick={action}
-      className={`w-full rounded-lg text-md xl:text-2xl text-primary bg-secondary ml-1 p-1 ${key === 0 ? "my-1" : ""}`}
+      className={`w-full rounded-lg text-md laptop:text-2xl text-primary bg-secondary ml-1 p-1 ${key === 0 ? "my-1" : ""}`}
     >
       {text}
       <FontAwesomeIcon icon={["fas", icon as IconName]} className="pl-2" />
