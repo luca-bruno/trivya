@@ -1,9 +1,5 @@
 import React, { createContext, useMemo, useState } from "react"
-
-interface MalteseQuestionsContextValue {
-  isDisplayingMalteseQuestions: boolean
-  setDisplayingMalteseQuestions: React.Dispatch<React.SetStateAction<boolean>>
-}
+import MalteseQuestionsContextValue from "./MalteseQuestionsContext.interface"
 
 export const MalteseQuestionsContext = createContext<MalteseQuestionsContextValue>({
   isDisplayingMalteseQuestions: false,

@@ -1,4 +1,4 @@
-const mainMenuButtons = (isAdultMode: boolean) => [
+const buttons = (isDisplayingAdultMode: boolean, isDisplayingAdminMode: boolean) => [
   {
     key: 0,
     url: "/number-of-teams",
@@ -11,7 +11,7 @@ const mainMenuButtons = (isAdultMode: boolean) => [
     url: "/number-of-teams",
     icon: "champagne-glasses",
     label: "Adult Mode",
-    displayCondition: isAdultMode && isAdultMode
+    displayCondition: isDisplayingAdultMode && isDisplayingAdultMode
   },
   {
     key: 2,
@@ -25,8 +25,8 @@ const mainMenuButtons = (isAdultMode: boolean) => [
     url: "/admin",
     icon: "key",
     label: "Admin",
-    displayCondition: true
+    displayCondition: isDisplayingAdminMode && isDisplayingAdminMode
   }
 ]
 
-export default mainMenuButtons
+export default buttons
