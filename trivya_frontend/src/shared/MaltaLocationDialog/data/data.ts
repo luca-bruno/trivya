@@ -1,4 +1,4 @@
-const maltaLocationDialogButtons = (acceptMalteseQuestions: () => void, declineMalteseQuestions: () => void) => [
+const buttons = (acceptMalteseQuestions: () => void, declineMalteseQuestions: () => void) => [
   {
     key: 0,
     label: "Accept Maltese Questions",
@@ -15,4 +15,4 @@ const maltaLocationDialogButtons = (acceptMalteseQuestions: () => void, declineM
   }
 ]
 
-export default maltaLocationDialogButtons
+export default buttons

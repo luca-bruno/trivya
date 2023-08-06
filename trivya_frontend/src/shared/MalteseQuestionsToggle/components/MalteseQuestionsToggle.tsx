@@ -7,9 +7,7 @@ const MalteseQuestionsToggle = () => {
 
   const { isDisplayingMalteseQuestions, setDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
 
-  const toggleDisplayingMalteseQuestions = () => {
-    setDisplayingMalteseQuestions(prev => !prev)
-  }
+  const toggleDisplayingMalteseQuestions = () => setDisplayingMalteseQuestions(prev => !prev)
 
   return (
     <button

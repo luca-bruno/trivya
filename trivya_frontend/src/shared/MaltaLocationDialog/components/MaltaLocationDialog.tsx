@@ -1,6 +1,6 @@
 import React from "react"
 import MaltaLocationDialogTypes from "../types/MaltaLocationDialog.interface"
-import maltaLocationDialogButtons from "../data/data"
+import buttons from "../data/data"
 import MaltaLocationDialogButton from "./MaltaLocationDialogButton"
 
 const MaltaLocationDialog: React.FC<MaltaLocationDialogTypes> = ({ acceptMalteseQuestions, declineMalteseQuestions }) => (
@@ -16,7 +16,7 @@ const MaltaLocationDialog: React.FC<MaltaLocationDialogTypes> = ({ acceptMaltese
     </p>
 
     <div className="flex flex-col">
-      {maltaLocationDialogButtons(acceptMalteseQuestions, declineMalteseQuestions).map(button => (
+      { buttons(acceptMalteseQuestions, declineMalteseQuestions).map(button => (
         <MaltaLocationDialogButton key={button.key} button={button} />
       ))}
     </div>
