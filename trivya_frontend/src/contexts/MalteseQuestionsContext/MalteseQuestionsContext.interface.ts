@@ -1,6 +1,8 @@
 interface MalteseQuestionsContextValue {
-    isDisplayingMalteseQuestions: boolean
-    setDisplayingMalteseQuestions: React.Dispatch<React.SetStateAction<boolean>>
+  isDisplayingMalteseQuestions: boolean
+  setIsDisplayingMalteseQuestions: React.Dispatch<React.SetStateAction<boolean>>
+  isDisplayingMalteseFlag: boolean
+  setIsDisplayingMalteseFlag: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default MalteseQuestionsContextValue

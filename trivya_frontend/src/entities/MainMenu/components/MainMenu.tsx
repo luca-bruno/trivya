@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useContext } from "react"
 import AdultModeToggle from "@shared/AdultModeToggle/components/AdultModeToggle"
 import { Logo } from "@shared/Logo"
 import { MalteseQuestionsToggle } from "@shared/MalteseQuestionsToggle"
@@ -8,26 +8,15 @@ import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGra
 import MaltaLocationDialogContainer from "@shared/MaltaLocationDialog/containers/MaltaLocationDialogContainer"
 import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 import BirthdateDialogContainer from "@shared/BirthdateDialog/containers/BirthdateDialogContainer"
+import { AdminModeContext } from "@contexts/AdminModeContext/AdminModeContext"
+import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 
 const MainMenu = () => {
+  const { isDisplayingAdultMode, isBirthdateConfirmed, isBirthdateDialogDisplayed } = useContext(AdultModeContext)
+  const { isDisplayingAdminMode } = useContext(AdminModeContext)
+  const { isDisplayingMalteseFlag } = useContext(MalteseQuestionsContext)
+
   useBackgroundGradient({ numberOfTeams: 1 })
-
-  const [isMaltaDisplayed, setMaltaDisplayed] = useState(false)
-
-  const { isDisplayingAdultMode, setIsDisplayingAdultMode, isBirthdateConfirmed, isBirthdateDialogDisplayed, setIsBirthdateDialogDisplayed } =
-    useContext(AdultModeContext)
-
-  // TODO: move to context
-  const toggleAdultModeDisplay = () => {
-    if (!isBirthdateDialogDisplayed && !isBirthdateConfirmed) {
-      setIsBirthdateDialogDisplayed(true)
-    } else {
-      setIsDisplayingAdultMode(prev => !prev)
-    }
-  }
-
-  // TODO: context
-  const [isDisplayingAdminMode, setIsDisplayingAdminMode] = useState(false)
 
   return (
     <div className="pt-32">
@@ -39,15 +28,15 @@ const MainMenu = () => {
             <MenuButton key={button.key} button={button} />
           ))}
 
-          {isMaltaDisplayed && <MalteseQuestionsToggle />}
+          {isDisplayingMalteseFlag && <MalteseQuestionsToggle />}
 
           {isBirthdateDialogDisplayed && !isBirthdateConfirmed && <BirthdateDialogContainer />}
 
-          <AdultModeToggle {...{ isDisplayingAdultMode, toggleAdultModeDisplay, setIsDisplayingAdminMode }} />
+          <AdultModeToggle />
         </div>
       </div>
 
-      <MaltaLocationDialogContainer {...{ setMaltaDisplayed }} />
+      <MaltaLocationDialogContainer />
     </div>
   )
 }

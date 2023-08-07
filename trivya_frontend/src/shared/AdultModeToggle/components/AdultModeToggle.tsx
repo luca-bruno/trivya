@@ -1,8 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useState } from "react"
-import AdultModeToggleTypes from "../types/AdultModeToggle.interface"
+import React, { useContext, useState } from "react"
+import { AdminModeContext } from "@contexts/AdminModeContext/AdminModeContext"
+import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 
-const AdultModeToggle: React.FC<AdultModeToggleTypes> = ({ isDisplayingAdultMode, toggleAdultModeDisplay, setIsDisplayingAdminMode }) => {
+const AdultModeToggle = () => {
+  const { isDisplayingAdultMode, toggleAdultModeDisplay } = useContext(AdultModeContext)
+  const { setIsDisplayingAdminMode } = useContext(AdminModeContext)
+
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout>()
   const holdDuration = 5000
 
