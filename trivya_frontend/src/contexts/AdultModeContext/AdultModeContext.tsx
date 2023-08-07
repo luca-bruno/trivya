@@ -15,18 +15,17 @@ export const AdultModeContextProvider: React.FC<{ children: React.ReactNode }> =
   const [isBirthdateConfirmed, setIsBirthdateConfirmed] = useState(false)
   const [isBirthdateDialogDisplayed, setIsBirthdateDialogDisplayed] = useState(false)
 
-  const contextValue: AdultModeContextValue = useMemo(() => ({
-    isDisplayingAdultMode,
-    setIsDisplayingAdultMode,
-    isBirthdateConfirmed,
-    setIsBirthdateConfirmed,
-    isBirthdateDialogDisplayed,
-    setIsBirthdateDialogDisplayed
-  }), [isBirthdateConfirmed, isBirthdateDialogDisplayed, isDisplayingAdultMode])
-
-  return (
-    <AdultModeContext.Provider value={contextValue}>
-      { children }
-    </AdultModeContext.Provider>
+  const contextValue: AdultModeContextValue = useMemo(
+    () => ({
+      isDisplayingAdultMode,
+      setIsDisplayingAdultMode,
+      isBirthdateConfirmed,
+      setIsBirthdateConfirmed,
+      isBirthdateDialogDisplayed,
+      setIsBirthdateDialogDisplayed
+    }),
+    [isBirthdateConfirmed, isBirthdateDialogDisplayed, isDisplayingAdultMode]
   )
+
+  return <AdultModeContext.Provider value={contextValue}>{children}</AdultModeContext.Provider>
 }

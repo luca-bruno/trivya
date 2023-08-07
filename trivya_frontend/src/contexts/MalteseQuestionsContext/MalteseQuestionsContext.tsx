@@ -9,14 +9,13 @@ export const MalteseQuestionsContext = createContext<MalteseQuestionsContextValu
 export const MalteseQuestionsContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDisplayingMalteseQuestions, setDisplayingMalteseQuestions] = useState(false)
 
-  const contextValue: MalteseQuestionsContextValue = useMemo(() => ({
-    isDisplayingMalteseQuestions,
-    setDisplayingMalteseQuestions
-  }), [isDisplayingMalteseQuestions])
-
-  return (
-    <MalteseQuestionsContext.Provider value={contextValue}>
-      { children }
-    </MalteseQuestionsContext.Provider>
+  const contextValue: MalteseQuestionsContextValue = useMemo(
+    () => ({
+      isDisplayingMalteseQuestions,
+      setDisplayingMalteseQuestions
+    }),
+    [isDisplayingMalteseQuestions]
   )
+
+  return <MalteseQuestionsContext.Provider value={contextValue}>{children}</MalteseQuestionsContext.Provider>
 }

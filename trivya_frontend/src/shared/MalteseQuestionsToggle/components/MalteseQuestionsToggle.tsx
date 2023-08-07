@@ -1,4 +1,4 @@
-import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext"
+import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 import React, { useContext } from "react"
 import { CircleFlag } from "react-circle-flags"
 

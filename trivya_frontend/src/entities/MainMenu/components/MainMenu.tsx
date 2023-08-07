@@ -6,7 +6,7 @@ import { MenuButton } from "@shared/MenuButton"
 import buttons from "@shared/MenuButton/data/data"
 import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGradient"
 import MaltaLocationDialogContainer from "@shared/MaltaLocationDialog/containers/MaltaLocationDialogContainer"
-import { AdultModeContext } from "@contexts/AdultModeContext"
+import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 import BirthdateDialogContainer from "@shared/BirthdateDialog/containers/BirthdateDialogContainer"
 
 const MainMenu = () => {
@@ -14,14 +14,8 @@ const MainMenu = () => {
 
   const [isMaltaDisplayed, setMaltaDisplayed] = useState(false)
 
-  const {
-    isDisplayingAdultMode,
-    setIsDisplayingAdultMode,
-    isBirthdateConfirmed,
-    setIsBirthdateConfirmed,
-    isBirthdateDialogDisplayed,
-    setIsBirthdateDialogDisplayed
-  } = useContext(AdultModeContext)
+  const { isDisplayingAdultMode, setIsDisplayingAdultMode, isBirthdateConfirmed, isBirthdateDialogDisplayed, setIsBirthdateDialogDisplayed } =
+    useContext(AdultModeContext)
 
   // TODO: move to context
   const toggleAdultModeDisplay = () => {

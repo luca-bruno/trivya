@@ -1,7 +1,7 @@
 import useReactIpLocation from "react-ip-details"
 import React, { useContext, useEffect, useState } from "react"
 import { MaltaLocationDialog } from "@shared/MaltaLocationDialog"
-import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext"
+import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 import MaltaLocationDialogContainerTypes from "../types/MaltaLocationDialogContainer.interface"
 
 const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> = ({ setMaltaDisplayed }) => {
@@ -32,9 +32,7 @@ const MaltaLocationDialogContainer: React.FC<MaltaLocationDialogContainerTypes> 
     }
   }, [countryName, setMaltaLocation, setModalDisplayed])
 
-  return (
-    isMaltaLocation && isModalDisplayed && <MaltaLocationDialog {...{ acceptMalteseQuestions, declineMalteseQuestions }} />
-  )
+  return isMaltaLocation && isModalDisplayed && <MaltaLocationDialog {...{ acceptMalteseQuestions, declineMalteseQuestions }} />
 }
 
 export default MaltaLocationDialogContainer

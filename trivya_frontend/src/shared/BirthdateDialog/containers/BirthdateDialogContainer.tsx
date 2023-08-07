@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react"
-import { AdultModeContext } from "@contexts/AdultModeContext"
+import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 import BirthdateDialog from "../components/BirthdateDialog"
 import { MAX_YEAR, MIN_YEAR } from "../constants"
 
