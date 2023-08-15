@@ -1,17 +1,24 @@
 import express from "express";
-
-const port = 8000;
+import { Sequelize, DataTypes } from "sequelize";
 
 const app = express();
+const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("HELLO FROM EXPRESS + TS!!!!");
-});
+// const sequelize = new Sequelize('postgres', 'postgres', {
+//   host: 'localhost',
+//   dialect: 'postgres',
+// });
 
-app.get("/hi", (req, res) => {
-  res.send({ data: "BYE!" });
-});
+// app.get('/questions', async (req, res) => {
+//   try {
+//     const questions = await Question.findAll();
+//     res.json(questions);
+//   } catch (error) {
+//     console.error('Error fetching questions:', error);
+//     res.status(500).json({ error: 'An error occurred' });
+//   }
+// });
 
 app.listen(port, () => {
-  console.log(`now test listening on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
