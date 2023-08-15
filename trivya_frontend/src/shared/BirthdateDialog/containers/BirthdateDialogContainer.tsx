@@ -25,7 +25,7 @@ const BirthdateDialogContainer = () => {
     return true
   }
 
-  const { setIsBirthdateConfirmed, setIsBirthdateDialogDisplayed, setIsDisplayingAdultMode } = useContext(AdultModeContext)
+  const { setIsBirthdateConfirmed, isBirthdateConfirmed, setIsBirthdateDialogDisplayed, setIsDisplayingAdultMode } = useContext(AdultModeContext)
 
   const closeDialog = () => {
     setOpen(false)
@@ -51,7 +51,9 @@ const BirthdateDialogContainer = () => {
 
   const submitDialog = () => {
     validateDate()
-    setIsDisplayingAdultMode(true)
+    if (isBirthdateConfirmed) {
+      setIsDisplayingAdultMode(true)
+    }
     closeDialog()
   }
 
