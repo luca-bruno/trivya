@@ -1,6 +1,6 @@
 import React from "react"
 import MaltaLocationDialogTypes from "../types/MaltaLocationDialog.interface"
-import buttons from "../data/data"
+import buttons from "../data"
 import MaltaLocationDialogButton from "./MaltaLocationDialogButton"
 
 const MaltaLocationDialog: React.FC<MaltaLocationDialogTypes> = ({ acceptMalteseQuestions, declineMalteseQuestions }) => (
