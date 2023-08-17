@@ -4,10 +4,9 @@ import { MaltaLocationDialog } from "@shared/MaltaLocationDialog"
 import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 
 const MaltaLocationDialogContainer = () => {
-  const [isMaltaUserLocation, setMaltaUserLocation] = useState(false)
   const [isModalDisplayed, setModalDisplayed] = useState(false)
 
-  const { setIsDisplayingMalteseQuestions, setIsDisplayingMalteseFlag } = useContext(MalteseQuestionsContext)
+  const { setIsDisplayingMalteseQuestions, setIsDisplayingMalteseFlag, isDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
 
   const { ipResponse: userIpLocation } = useReactIpLocation()
   const { country_name: countryName } = userIpLocation || ""
@@ -25,12 +24,11 @@ const MaltaLocationDialogContainer = () => {
 
   useEffect(() => {
     if (countryName === "Malta") {
-      setMaltaUserLocation(true)
       setModalDisplayed(true)
     }
-  }, [countryName, setMaltaUserLocation, setModalDisplayed])
+  }, [countryName, setModalDisplayed])
 
-  return isMaltaUserLocation && isModalDisplayed && <MaltaLocationDialog {...{ acceptMalteseQuestions, declineMalteseQuestions }} />
+  return !isDisplayingMalteseQuestions && isModalDisplayed && <MaltaLocationDialog {...{ acceptMalteseQuestions, declineMalteseQuestions }} />
 }
 
 export default MaltaLocationDialogContainer
