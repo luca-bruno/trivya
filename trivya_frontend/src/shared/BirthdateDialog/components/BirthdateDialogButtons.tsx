@@ -1,7 +1,7 @@
 import { IconName } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
-import buttons from "../data/data"
+import buttons from "../data"
 import { BirthdateDialogButtonsTypes } from "../types/BirthdateDialog.interface"
 
 const BirthdateDialogButtons: React.FC<BirthdateDialogButtonsTypes> = ({ closeDialog, submitDialog }) => (

@@ -1,7 +1,7 @@
 const buttons = (closeDialog: () => void, submitDialog: () => void) => [
   {
     key: 0,
-    icon: "arrow-left",
+    icon: "caret-left",
     action: closeDialog
   },
   {
