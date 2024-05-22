@@ -1,24 +1,38 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Answer extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
+
+export const Answer = sequelize.define(
+  'Answer',
+  {
+    // Model attributes are defined here
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    contentMt: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    isCorrect: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     }
-  }
-  Answer.init({
-    content: DataTypes.STRING,
-    is_correct: DataTypes.BOOLEAN
-  }, {
-    sequelize,
-    modelName: 'Answer',
-  });
-  return Answer;
+  },
+  {
+    // Other model options go here
+  },
+);
+
+Answer.associate = (model) => {
+  Answer.belongsTo(model.Question, {
+    foreignKey: 'question_uuid',
+    as: 'question',
+  })
 };
+
+  // Answer.belongsTo(Question, {
+  //   foreignKey: 'question_uuid',
+  // })
+// );

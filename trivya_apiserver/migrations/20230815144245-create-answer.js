@@ -14,18 +14,21 @@ module.exports = {
         defaultValue: uuidv4(),
       },
       content: {
-        type: Sequelize.STRING
+        type: DataTypes.TEXT
+      },
+      contentMt: {
+        type: DataTypes.TEXT
       },
       is_correct: {
-        type: Sequelize.BOOLEAN
+        type: DataTypes.BOOLEAN
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },

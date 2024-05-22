@@ -3,8 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
+    // TODO: can remove eventually
     return queryInterface.bulkInsert('Questions', [{
-      content: 'What year did the Battle of Hastings occur?',
+      content: 'yeah',
       category: 'History',
       fact: 'Yep it really did lol',
       difficulty: 'Hard',

@@ -4,10 +4,13 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
+const { Question } = require('./question');
+const { Answer } = require('./answer');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+
 
 let sequelize;
 if (config.use_env_variable) {
@@ -39,5 +42,13 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+Question.associate({ Answer });
+Answer.associate({ Question });
+
+(async () => {
+  await sequelize.sync({ force: true });
+})();
+
 
 module.exports = db;

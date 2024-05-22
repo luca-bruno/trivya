@@ -8,30 +8,36 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Questions', {
       uuid: {
-        allowNull: false,
-        primaryKey: true,
+        // allowNull: false,
+        // primaryKey: true,
+        // type: DataTypes.INTEGER,
         type: DataTypes.UUID,
+        // TODO: change thissssss - i need uuid to generated
         defaultValue: uuidv4(),
       },
       content: {
-        type: Sequelize.STRING
+        type: DataTypes.TEXT
+      },
+      contentMt: {
+        type: DataTypes.TEXT
       },
       category: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       fact: {
-        type: Sequelize.STRING
+        type: DataTypes.TEXT
+      },
+      factMt: {
+        type: DataTypes.TEXT
       },
       difficulty: {
-        type: Sequelize.STRING
+        type: DataTypes.STRING
       },
       createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       }
     });
   },
