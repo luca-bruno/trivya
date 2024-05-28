@@ -2,18 +2,16 @@
 /** @type {import('sequelize-cli').Migration} */
 
 const DataTypes = require('sequelize/lib/data-types');
-const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Questions', {
       uuid: {
         // allowNull: false,
         // primaryKey: true,
-        // type: DataTypes.INTEGER,
+        unique: true,
         type: DataTypes.UUID,
-        // TODO: change thissssss - i need uuid to generated
-        defaultValue: uuidv4(),
+        defaultValue: Sequelize.literal('uuid_generate_v4()'),
       },
       content: {
         type: DataTypes.TEXT
@@ -31,7 +29,10 @@ module.exports = {
         type: DataTypes.TEXT
       },
       difficulty: {
+        // TODO: change
         type: DataTypes.STRING
+        // type: DataTypes.ENUM,
+        // values: ['Easy', 'Medium', 'Hard', 'Extreme'],
       },
       createdAt: {
         type: DataTypes.DATE
@@ -41,7 +42,8 @@ module.exports = {
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+
+  async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('Questions');
   }
 };

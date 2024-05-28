@@ -3,8 +3,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
-export const Question = sequelize.define(
-  'Question',
+const Question = sequelize.define('question',
   {
     // Model attributes are defined here
     content: {
@@ -28,9 +27,11 @@ export const Question = sequelize.define(
       allowNull: false,
     },
     difficulty: {
-      type: DataTypes.ENUM,
-      values: ['easy', 'medium', 'hard', 'extreme', 'temp'],
-      allowNull: false,
+      // TODO: change
+      type: DataTypes.STRING
+      // type: DataTypes.ENUM,
+      // values: ['Easy', 'Medium', 'Hard', 'Extreme'],
+      // allowNull: false,
     },
   },
   {
@@ -38,9 +39,18 @@ export const Question = sequelize.define(
   },
 );
 
-Question.associate = (models) => {
-  Question.hasMany(models.Answer, {
-    foreignKey: 'question_uuid',
-    as: 'answers',
-  });
-};
+
+
+// Question.associate = (models) => {
+//   Question.hasMany(models.Answer, {
+//     foreignKey: 'question_uuid',
+//     as: 'answers',
+//   });
+// };
+
+
+sequelize.sync({ alter: true }).then(() => {
+
+}).catch(err => console.log(err));
+
+module.exports = Question;

@@ -2,9 +2,10 @@
 
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
+const Question = require('./question');
 
-export const Answer = sequelize.define(
-  'Answer',
+
+const Answer = sequelize.define('answer',
   {
     // Model attributes are defined here
     content: {
@@ -25,14 +26,7 @@ export const Answer = sequelize.define(
   },
 );
 
-Answer.associate = (model) => {
-  Answer.belongsTo(model.Question, {
-    foreignKey: 'question_uuid',
-    as: 'question',
-  })
-};
+Question.hasMany(Answer);
+Answer.belongsTo(Question);
 
-  // Answer.belongsTo(Question, {
-  //   foreignKey: 'question_uuid',
-  // })
-// );
+module.exports = Answer;

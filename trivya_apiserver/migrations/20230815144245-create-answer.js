@@ -2,16 +2,15 @@
 /** @type {import('sequelize-cli').Migration} */
 
 const DataTypes = require('sequelize/lib/data-types');
-const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     await queryInterface.createTable('Answers', {
       uuid: {
-        allowNull: false,
-        primaryKey: true,
+        // allowNull: false,
+        // primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: uuidv4(),
+        defaultValue: Sequelize.literal('uuid_generate_v4()'),
       },
       content: {
         type: DataTypes.TEXT
@@ -19,20 +18,22 @@ module.exports = {
       contentMt: {
         type: DataTypes.TEXT
       },
-      is_correct: {
+      isCorrect: {
         type: DataTypes.BOOLEAN
       },
       createdAt: {
-        allowNull: false,
         type: DataTypes.DATE
       },
       updatedAt: {
-        allowNull: false,
         type: DataTypes.DATE
+      },
+      questionUuid: {
+        type: DataTypes.UUID
       }
     });
   },
-  async down(queryInterface, Sequelize) {
+
+  async down (queryInterface, Sequelize) {
     await queryInterface.dropTable('Answers');
   }
 };
