@@ -10,7 +10,8 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "prettier"
   ],
   overrides: [
   ],
@@ -49,6 +50,10 @@ module.exports = {
     "react/jsx-max-props-per-line": "off",
     "react/jsx-wrap-multilines": "off",
     "react/jsx-curly-newline": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
     "comma-dangle": [2, "never"],
     "react/jsx-closing-bracket-location": "off",
     "max-len": [2, { code: 150, ignoreUrls: true }],
@@ -59,6 +64,7 @@ module.exports = {
     "react/function-component-definition": "off",
     "arrow-parens": ["error", "as-needed"],
     "operator-linebreak": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "camelcase": "off"
   }
 }
