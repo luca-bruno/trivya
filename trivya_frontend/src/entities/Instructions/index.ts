@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as Instructions } from "./components/Instructions"
+import Instructions from "./components/Instructions"
+
+export default Instructions

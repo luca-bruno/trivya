@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as Admin } from "./components/Admin"
+import Admin from "./components/Admin"
+
+export default Admin

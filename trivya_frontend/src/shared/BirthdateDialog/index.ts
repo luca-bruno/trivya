@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as BirthdateDialog } from "./containers/BirthdateDialogContainer"
+import BirthdateDialog from "./components/BirthdateDialog"
+
+export default BirthdateDialog

@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as DiceRoll } from "./components/DiceRoll"
+import DiceRoll from "./components/DiceRoll"
+
+export default DiceRoll

@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as MainMenu } from "./components/MainMenu"
+import MainMenu from "./components/MainMenu"
+
+export default MainMenu

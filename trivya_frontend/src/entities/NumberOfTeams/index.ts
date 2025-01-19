@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as NumberOfTeams } from "./components/NumberOfTeams"
+import NumberOfTeams from "./components/NumberOfTeams"
+
+export default NumberOfTeams
