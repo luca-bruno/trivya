@@ -30,7 +30,7 @@
     "react-ip-details": "^1.2.6",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.10.0",
-    "swiper": "^8.4.5",
+    "swiper": "^11.2.1",
     "tsc": "^2.0.4",
     "typescript": "^5.0.3",
     "webfontloader": "^1.6.28",
