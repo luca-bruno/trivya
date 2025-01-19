@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React, { useContext, useState } from "react"
+import { FC, useContext, useState } from "react"
 import { AdminModeContext } from "@contexts/AdminModeContext/AdminModeContext"
 import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 
-const AdultModeToggle = () => {
+const AdultModeToggle: FC = () => {
   const { isDisplayingAdultMode, toggleAdultModeDisplay } = useContext(AdultModeContext)
   const { setIsDisplayingAdminMode } = useContext(AdminModeContext)
 
@@ -25,17 +25,15 @@ const AdultModeToggle = () => {
       onMouseUp={onHoldEnd}
       onTouchStart={onHoldStart}
       onTouchEnd={onHoldEnd}
-      className={`${isDisplayingAdultMode ? "bg-secondary" : "bg-primary"} 
-        "cursor-pointer select-none rounded-full flex justify-center items-center absolute top-3 right-3 w-12 laptopL:w-20 h-12 laptopL:h-20`}
-    >
-      <p className={`${!isDisplayingAdultMode ? "text-secondary" : "text-primary"} text-3xl laptopL:text-5xl font-bold z-10`}>18</p>
-
-      {isDisplayingAdultMode && (
+      className={`${isDisplayingAdultMode ? "grayscale" : ""} 
+        "cursor-pointer select-none rounded-full FLEX-CENTER absolute top-3 right-3 w-12 laptopL:w-20 h-12 laptopL:h-20 bg-primary`}
+        >
+      <p className="text-secondary text-3xl laptopL:text-5xl font-bold z-10">
         <FontAwesomeIcon
-          icon={["fas", "ban"]}
-          className="text-red-primary text-5xl laptopL:text-7xl absolute top-0 right-0 laptopL:right-0 w-12 laptopL:w-20 h-12 laptopL:h-20 z-20"
-        />
-      )}
+          icon={["fas", "champagne-glasses"]}
+          className="w-10 laptopL:w-18 h-10 laptopL:h-18 z-20"
+          />
+      </p>
     </button>
   )
 }

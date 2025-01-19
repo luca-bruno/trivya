@@ -1,8 +1,8 @@
-import React from "react"
+import { FC } from "react"
 
-const Logo = () => (
+const Logo: FC = () => (
   <p
-    className="flex justify-center items-center m-auto font-primary text-primary select-none
+    className="FLEX-CENTER m-auto font-primary text-primary select-none
     text-8xl mobileL:text-9xl laptop:text-[10rem]"
   >
     trivya

@@ -2,7 +2,7 @@ import { IconName } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import tilt3dElement from "@shared/helpers/tilt3dElement/tilt3dElement"
+import tilt3dElement from "@shared/helpers/tilt3dElement"
 import { MenuButtonTypes } from "../types/MenuButton.interface"
 
 const MenuButton: React.FC<MenuButtonTypes> = ({ button }) => {

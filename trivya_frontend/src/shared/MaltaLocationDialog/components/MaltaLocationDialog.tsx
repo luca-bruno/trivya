@@ -5,7 +5,7 @@ import MaltaLocationDialogButton from "./MaltaLocationDialogButton"
 
 const MaltaLocationDialog: React.FC<MaltaLocationDialogTypes> = ({ acceptMalteseQuestions, declineMalteseQuestions }) => (
   <div
-    className="absolute bottom-0 left-0 right-0 flex m-auto items-center justify-center
+    className="absolute bottom-0 left-0 right-0 m-auto FLEX-CENTER
     pt-0.5 bg-primary w-72 mobileL:w-80 laptop:w-[30rem] h-24 laptop:h-36 rounded-tr-xl rounded-tl-xl"
   >
     <div className="text-secondary text-md laptop:text-2xl text-left mobileL:px-3 mobileL:pt-1 font-secondary">
