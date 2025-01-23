@@ -1,5 +1,3 @@
-const renderIcon = (qty: number) => Array(qty).fill("user")
-
 const buttons = [
   {
     id: 0,
