@@ -4,6 +4,7 @@
 
 @layer base {
   html {
+    background: linear-gradient(180deg, #0f4c81 0%, #125793 25%, #1461a4 50%, #1461a4 80%, #1668b0 100%);
     -webkit-tap-highlight-color: transparent;
   }
 }
@@ -11,5 +12,13 @@
 @layer utilities {
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+@layer components {
+  .FLEX-CENTER {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

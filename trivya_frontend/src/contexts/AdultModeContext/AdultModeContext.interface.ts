@@ -1,11 +1,13 @@
-interface AdultModeContextValue {
+import { Dispatch, SetStateAction } from "react"
+
+interface AdultModeContextValueTypes {
   isDisplayingAdultMode: boolean
-  setIsDisplayingAdultMode: React.Dispatch<React.SetStateAction<boolean>>
+  setIsDisplayingAdultMode: Dispatch<SetStateAction<boolean>>
   isBirthdateConfirmed: boolean
-  setIsBirthdateConfirmed: React.Dispatch<React.SetStateAction<boolean>>
+  setIsBirthdateConfirmed: Dispatch<SetStateAction<boolean>>
   isBirthdateDialogDisplayed: boolean
-  setIsBirthdateDialogDisplayed: React.Dispatch<React.SetStateAction<boolean>>
+  setIsBirthdateDialogDisplayed: Dispatch<SetStateAction<boolean>>
   toggleAdultModeDisplay: () => void
 }
 
-export default AdultModeContextValue
+export default AdultModeContextValueTypes

@@ -1,14 +1,15 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { Provider } from "react-redux"
-import { AdminModeContextProvider } from "@contexts/AdminModeContext/AdminModeContext"
 import WebFont from "webfontloader"
+import { AdminModeContextProvider } from "@contexts/AdminModeContext/AdminModeContext"
+import { MalteseQuestionsContextProvider } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
+import { AdultModeContextProvider } from "@contexts/AdultModeContext/AdultModeContext"
+import { NavigationProvider } from "@contexts/NavigationContext/NavigationContext"
 import App from "./App"
 import "./index.css"
 import "./fonts.css"
 import store from "./app/store"
-import { MalteseQuestionsContextProvider } from "./contexts/MalteseQuestionsContext/MalteseQuestionsContext"
-import { AdultModeContextProvider } from "./contexts/AdultModeContext/AdultModeContext"
 
 WebFont.load({
   custom: {
@@ -19,13 +20,15 @@ WebFont.load({
 ReactDOM.createRoot(document.getElementById("root") as HTMLHtmlElement | DocumentFragment).render(
   <React.StrictMode>
     <Provider store={store}>
-      <AdminModeContextProvider>
-        <AdultModeContextProvider>
-          <MalteseQuestionsContextProvider>
-            <App />
-          </MalteseQuestionsContextProvider>
-        </AdultModeContextProvider>
-      </AdminModeContextProvider>
+      <NavigationProvider>
+        <AdminModeContextProvider>
+          <AdultModeContextProvider>
+            <MalteseQuestionsContextProvider>
+              <App />
+            </MalteseQuestionsContextProvider>
+          </AdultModeContextProvider>
+        </AdminModeContextProvider>
+      </NavigationProvider>
     </Provider>
   </React.StrictMode>
 )

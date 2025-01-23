@@ -1,15 +1,15 @@
-import React, { createContext, useMemo, useState } from "react"
-import AdminModeContextValue from "./AdminModeContext.interface"
+import { createContext, FC, ReactNode, useContext, useMemo, useState } from "react"
+import AdminModeContextValueTypes from "./AdminModeContext.interface"
 
-export const AdminModeContext = createContext<AdminModeContextValue>({
+export const AdminModeContext = createContext<AdminModeContextValueTypes>({
   isDisplayingAdminMode: false,
   setIsDisplayingAdminMode: () => undefined
 })
 
-export const AdminModeContextProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AdminModeContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isDisplayingAdminMode, setIsDisplayingAdminMode] = useState(false)
 
-  const contextValue: AdminModeContextValue = useMemo(
+  const contextValue: AdminModeContextValueTypes = useMemo(
     () => ({
       isDisplayingAdminMode,
       setIsDisplayingAdminMode
@@ -19,3 +19,5 @@ export const AdminModeContextProvider: React.FC<{ children: React.ReactNode }> =
 
   return <AdminModeContext.Provider value={contextValue}>{children}</AdminModeContext.Provider>
 }
+
+export const useAdminMode = () => useContext(AdminModeContext)

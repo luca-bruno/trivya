@@ -1,8 +1,10 @@
-interface MalteseQuestionsContextValue {
+import { Dispatch, SetStateAction } from "react"
+
+interface MalteseQuestionsContextValueTypes {
   isDisplayingMalteseQuestions: boolean
-  setIsDisplayingMalteseQuestions: React.Dispatch<React.SetStateAction<boolean>>
+  setIsDisplayingMalteseQuestions: Dispatch<SetStateAction<boolean>>
   isDisplayingMalteseFlag: boolean
-  setIsDisplayingMalteseFlag: React.Dispatch<React.SetStateAction<boolean>>
+  setIsDisplayingMalteseFlag: Dispatch<SetStateAction<boolean>>
 }
 
-export default MalteseQuestionsContextValue
+export default MalteseQuestionsContextValueTypes

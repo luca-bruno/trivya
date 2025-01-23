@@ -1,7 +1,7 @@
-import React, { createContext, useCallback, useMemo, useState } from "react"
-import AdultModeContextValue from "./AdultModeContext.interface"
+import React, { createContext, useCallback, useContext, useMemo, useState } from "react"
+import AdultModeContextValueTypes from "./AdultModeContext.interface"
 
-export const AdultModeContext = createContext<AdultModeContextValue>({
+export const AdultModeContext = createContext<AdultModeContextValueTypes>({
   isDisplayingAdultMode: false,
   setIsDisplayingAdultMode: () => undefined,
   isBirthdateConfirmed: false,
@@ -24,7 +24,7 @@ export const AdultModeContextProvider: React.FC<{ children: React.ReactNode }> =
     }
   }, [isBirthdateConfirmed, isBirthdateDialogDisplayed])
 
-  const contextValue: AdultModeContextValue = useMemo(
+  const contextValue: AdultModeContextValueTypes = useMemo(
     () => ({
       isDisplayingAdultMode,
       setIsDisplayingAdultMode,
@@ -39,3 +39,5 @@ export const AdultModeContextProvider: React.FC<{ children: React.ReactNode }> =
 
   return <AdultModeContext.Provider value={contextValue}>{children}</AdultModeContext.Provider>
 }
+
+export const useAdultMode = () => useContext(AdultModeContext)

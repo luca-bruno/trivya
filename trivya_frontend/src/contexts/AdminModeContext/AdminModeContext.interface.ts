@@ -1,6 +1,8 @@
-interface AdminModeContextValue {
+import { Dispatch, SetStateAction } from "react"
+
+interface AdminModeContextValueTypes {
   isDisplayingAdminMode: boolean
-  setIsDisplayingAdminMode: React.Dispatch<React.SetStateAction<boolean>>
+  setIsDisplayingAdminMode: Dispatch<SetStateAction<boolean>>
 }
 
-export default AdminModeContextValue
+export default AdminModeContextValueTypes
