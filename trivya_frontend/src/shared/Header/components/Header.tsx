@@ -2,8 +2,9 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React from "react"
 import { CountdownCircleTimer } from "react-countdown-circle-timer"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
 import HeaderTypes from "../types/Header.interface"
+import { useNavigation } from "@contexts/NavigationContext/NavigationContext"
 
 const Header: React.FC<HeaderTypes> = ({
   displayBackButton,
@@ -17,7 +18,7 @@ const Header: React.FC<HeaderTypes> = ({
   nextButtonIcon = "fa-caret-right",
   nextNavigationTarget
 }) => {
-  const navigate = useNavigate()
+  const { navigate } = useNavigation()
 
   const absolutePositionedPages = ["team-selection", "dice-roll"]
 

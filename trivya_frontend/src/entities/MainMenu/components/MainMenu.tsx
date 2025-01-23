@@ -1,14 +1,14 @@
-import { FC, useContext } from "react"
+import { FC } from "react"
 import AdultModeToggle from "@shared/AdultModeToggle/components/AdultModeToggle"
 import { Logo } from "@shared/Logo"
 import { MalteseQuestionsToggle } from "@shared/MalteseQuestionsToggle"
 import MenuButton from "@shared/MenuButton"
 import useBackgroundGradient from "@hooks/useBackgroundGradient/useBackgroundGradient"
 import MaltaLocationDialogContainer from "@shared/MaltaLocationDialog/containers/MaltaLocationDialogContainer"
-import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 import BirthdateDialogContainer from "@shared/BirthdateDialog/containers/BirthdateDialogContainer"
-import { AdminModeContext } from "@contexts/AdminModeContext/AdminModeContext"
-import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
+import { useAdminMode } from "@contexts/AdminModeContext/AdminModeContext"
+import { useAdultMode } from "@contexts/AdultModeContext/AdultModeContext"
+import { useMalteseQuestions } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules"
 import useMenuButtons from "@shared/MenuButton/hooks/useMenuButtons"
@@ -20,9 +20,9 @@ import "swiper/css/pagination"
 import "swiper/css/scrollbar"
 
 const MainMenu: FC = () => {
-  const { isDisplayingAdultMode, isBirthdateConfirmed, isBirthdateDialogDisplayed, setIsBirthdateDialogDisplayed } = useContext(AdultModeContext)
-  const { isDisplayingAdminMode } = useContext(AdminModeContext)
-  const { isDisplayingMalteseFlag } = useContext(MalteseQuestionsContext)
+  const { isDisplayingAdultMode, isBirthdateConfirmed, isBirthdateDialogDisplayed, setIsBirthdateDialogDisplayed } = useAdultMode()
+  const { isDisplayingAdminMode } = useAdminMode()
+  const { isDisplayingMalteseFlag } = useMalteseQuestions()
 
   useBackgroundGradient({ numberOfTeams: 1 })
 
