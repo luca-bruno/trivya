@@ -13,8 +13,7 @@ module.exports = {
     "plugin:import/typescript",
     "prettier"
   ],
-  overrides: [
-  ],
+  overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaFeatues: {
@@ -23,23 +22,34 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module"
   },
-  plugins: [
-    "react",
-    "@typescript-eslint",
-    "eslint-plugin-import",
-    "eslint-plugin-react-hooks"
-  ],
+  plugins: ["react", "@typescript-eslint", "eslint-plugin-import", "eslint-plugin-react-hooks"],
   settings: {
     "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
-      typescript: {},
+      typescript: {
+        project: "./tsconfig.json",
+      },
       node: {
+        paths: ['src'],
         extensions: [".js", ".jsx", ".ts", ".tsx"],
-        moduleDirectory: ["node_modules", "src/"]
-      }
+        moduleDirectory: ["node_modules", "src/"],
+        "project": ["tsconfig.json", "package/tsconfig.json"]
+      },
+      alias: {
+        map: [
+          ["@components", path.resolve(__dirname, "./src/components")],
+          ["@contexts", path.resolve(__dirname, "./src/contexts")],
+          ["@entities", path.resolve(__dirname, "./src/entities")],
+          ["@hooks", path.resolve(__dirname, "./src/hooks")],
+          ["@services", path.resolve(__dirname, "./src/services")],
+          ["@shared", path.resolve(__dirname, "./src/shared")],
+          ["@utils", path.resolve(__dirname, "./src/utils")]
+        ],
+        extensions: [".js", ".jsx", ".ts", ".tsx"]
+      },
     }
   },
   rules: {
@@ -65,6 +75,6 @@ module.exports = {
     "arrow-parens": ["error", "as-needed"],
     "operator-linebreak": "off",
     "object-curly-newline": "off",
-    "camelcase": "off"
+    camelcase: "off"
   }
 }
