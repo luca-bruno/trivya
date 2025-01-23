@@ -1,11 +1,10 @@
-import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
-import React, { useContext } from "react"
+import { useMalteseQuestions } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 import { CircleFlag } from "react-circle-flags"
 
 const MalteseQuestionsToggle = () => {
   const flag = <CircleFlag countryCode="mt" className="w-12 laptopL:w-20 h-12 laptopL:h-20" />
 
-  const { isDisplayingMalteseQuestions, setIsDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
+  const { isDisplayingMalteseQuestions, setIsDisplayingMalteseQuestions } = useMalteseQuestions()
 
   const toggleDisplayingMalteseQuestions = () => setIsDisplayingMalteseQuestions(prev => !prev)
 

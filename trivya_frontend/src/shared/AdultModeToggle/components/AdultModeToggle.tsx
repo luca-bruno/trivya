@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { FC, useContext, useState } from "react"
-import { AdminModeContext } from "@contexts/AdminModeContext/AdminModeContext"
-import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
+import { FC, useState } from "react"
+import { useAdminMode } from "@contexts/AdminModeContext/AdminModeContext"
+import { useAdultMode } from "@contexts/AdultModeContext/AdultModeContext"
 
 const AdultModeToggle: FC = () => {
-  const { isDisplayingAdultMode, toggleAdultModeDisplay } = useContext(AdultModeContext)
-  const { setIsDisplayingAdminMode } = useContext(AdminModeContext)
+  const { isDisplayingAdultMode, toggleAdultModeDisplay } = useAdultMode()
+  const { setIsDisplayingAdminMode } = useAdminMode()
 
   const [holdTimer, setHoldTimer] = useState<NodeJS.Timeout>()
   const holdDuration = 5000

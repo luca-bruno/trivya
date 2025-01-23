@@ -1,12 +1,12 @@
+import { useEffect, useState } from "react"
 import useReactIpLocation from "react-ip-details"
-import React, { useContext, useEffect, useState } from "react"
 import { MaltaLocationDialog } from "@shared/MaltaLocationDialog"
-import { MalteseQuestionsContext } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
+import { useMalteseQuestions } from "@contexts/MalteseQuestionsContext/MalteseQuestionsContext"
 
 const MaltaLocationDialogContainer = () => {
   const [isModalDisplayed, setModalDisplayed] = useState(false)
 
-  const { setIsDisplayingMalteseQuestions, setIsDisplayingMalteseFlag, isDisplayingMalteseQuestions } = useContext(MalteseQuestionsContext)
+  const { setIsDisplayingMalteseQuestions, setIsDisplayingMalteseFlag, isDisplayingMalteseQuestions } = useMalteseQuestions()
 
   const { ipResponse: userIpLocation } = useReactIpLocation()
   const { country_name: countryName } = userIpLocation || ""

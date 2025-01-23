@@ -1,9 +1,9 @@
+import { FC } from "react"
 import { IconName } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React from "react"
 import { MaltaLocationDialogButtonTypes } from "../types/MaltaLocationDialogButton.interface"
 
-const MaltaLocationDialogButton: React.FC<MaltaLocationDialogButtonTypes> = ({ button }) => {
+const MaltaLocationDialogButton: FC<MaltaLocationDialogButtonTypes> = ({ button }) => {
   const { key, label, action, text, icon } = button
 
   return (
