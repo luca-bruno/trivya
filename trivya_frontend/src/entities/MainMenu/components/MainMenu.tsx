@@ -39,9 +39,9 @@ const MainMenu: FC = () => {
           // onSlideChange={() => console.log('slide change')}
           // onSwiper={swiper => console.log(swiper)}
         >
-          {useMenuButtons(isDisplayingAdultMode, isDisplayingAdminMode).map(({ id, icon, label, url }) => (
+          {useMenuButtons(isDisplayingAdultMode, isDisplayingAdminMode).map(({ id, icons, label, targetPath }) => (
             <SwiperSlide className="p-10 FLEX-CENTER" key={id}>
-              <MenuButton {...{ id, icon, label, url }} />
+              <MenuButton {...{ id, icons, label, targetPath }} />
             </SwiperSlide>
           ))}
         </Swiper>

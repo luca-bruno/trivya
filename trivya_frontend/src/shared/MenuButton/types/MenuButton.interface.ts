@@ -1,12 +1,28 @@
-interface MenuButtonTypes {
+interface OptionOne {
+  targetPath: string
+  action?: never
+}
+
+interface OptionTwo {
+  targetPath?: never
+  action: () => unknown
+}
+
+type xxx = OptionOne | OptionTwo;
+
+type MenuButtonTypes = {
   id: number
-  url?: string
-  icon: string
+  targetPath?: string
+  icons: string[]
   label: string
   isDisplayed?: boolean
   value?: string | boolean | number
   backgroundColour?: string
   textColour?: string
-}
+  action?: () => unknown
+} & xxx
 
 export default MenuButtonTypes
+
+
+

@@ -3,10 +3,12 @@ import MenuButton from "@shared/MenuButton"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules"
 import { useState } from "react"
+import { useNavigation } from "@contexts/NavigationContext/NavigationContext"
 import buttons from "../data"
 
 const NumberOfTeams = () => {
   const [teamQuantitySelected, setTeamQuantitySelected] = useState<number | null>(null)
+  const { navigate } = useNavigation()
 
   return (
     <>
@@ -21,9 +23,9 @@ const NumberOfTeams = () => {
           // onSlideChange={() => console.log('slide change')}
           // onSwiper={swiper => console.log(swiper)}
         >
-          {buttons.map(({ id, icon, label, backgroundColour, textColour }) => (
+          {buttons.map(({ id, icons, label, backgroundColour, textColour }) => (
             <SwiperSlide className="p-10 FLEX-CENTER" key={id}>
-              <MenuButton {...{ id, icon, label, backgroundColour, textColour }} />
+              <MenuButton {...{ id, icons, label, backgroundColour, textColour, action: () => navigate("dice-roll")}} />
             </SwiperSlide>
           ))}
         </Swiper>

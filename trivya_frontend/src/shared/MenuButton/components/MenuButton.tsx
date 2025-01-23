@@ -1,11 +1,16 @@
 import { IconName } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
 import tilt3dElement from "@shared/helpers/tilt3dElement"
+import { useNavigation } from "@contexts/NavigationContext/NavigationContext"
 import MenuButtonTypes from "../types/MenuButton.interface"
 
-const MenuButton: React.FC<MenuButtonTypes> = ({ url, icon, label, isDisplayed = true, backgroundColour, textColour }) => {
+const MenuButton: React.FC<MenuButtonTypes> = ({ targetPath, icons, label, isDisplayed = true, backgroundColour, textColour, action }) => {
+  const mediaQueries =
+    "w-72 h-72 laptopL:h-72 laptopL:w-72 laptop:w-64 laptop:h-64 mobileL:h-56 mobileL:w-56 mobileM:h-52 mobileM:w-52 mobileS:h-48 mobileS:w-48"
+
+  const textColourCondition = textColour || "text-secondary"
+
   const [style, setStyle] = useState({})
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -21,32 +26,35 @@ const MenuButton: React.FC<MenuButtonTypes> = ({ url, icon, label, isDisplayed =
     })
   }
 
-  const mediaQueries =
-    "w-72 h-72 laptopL:h-72 laptopL:w-72 laptop:w-64 laptop:h-64 mobileL:h-56 mobileL:w-56 mobileM:h-52 mobileM:w-52 mobileS:h-48 mobileS:w-48"
-
   const buttonContents = (
     <>
-      <FontAwesomeIcon
-        icon={["fas", icon as IconName]}
-        style={{ color: textColour }}
-        className={`${textColour || "text-secondary"} text-4xl laptop:text-5xl laptopL:text-6xl flex m-auto pb-3`}
-      />
-      <p className={`${textColour || "text-secondary"} text-md laptop:text-2xl laptopL:text-3xl font-medium font-secondary select-none`}>{label}</p>
+      {icons.map(icon => (
+        <FontAwesomeIcon
+          key={icon}
+          icon={["fas", icon as IconName]}
+          style={{ color: textColour }}
+          className={`${textColourCondition} text-4xl laptop:text-5xl laptopL:text-6xl px-2 m-auto pb-3`}
+        />
+      ))}
+      <p className={`${textColourCondition} text-md laptop:text-2xl laptopL:text-3xl font-medium font-secondary select-none`}>{label}</p>
     </>
   )
+
+  const { navigate } = useNavigation()
 
   return (
     isDisplayed && (
       <div className={`FLEX-CENTER ${mediaQueries}`}>
         <button
           type="button"
+          onClick={!targetPath ? () => action : () => navigate(targetPath)}
           aria-label={label}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={style}
           className={`${backgroundColour || "bg-primary"} rounded-lg cursor-pointer ${mediaQueries}`}
         >
-          {url ? <Link to={url}>{buttonContents}</Link> : buttonContents}
+          {buttonContents}
         </button>
       </div>
     )

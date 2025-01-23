@@ -6,39 +6,39 @@ const useMenuButtons = (isDisplayingAdultMode: boolean, isDisplayingAdminMode: b
       [
         {
           id: 0,
-          url: "/number-of-teams",
-          icon: "dice",
+          targetPath: "number-of-teams",
+          icons: ["dice"],
           label: "Classic Mode"
         },
         {
           id: 1,
-          url: "/wip",
-          icon: "stopwatch",
+          targetPath: "wip",
+          icons: ["stopwatch"],
           label: "Time Attack"
         },
         {
           id: 2,
-          url: "/wip",
-          icon: "sitemap",
+          targetPath: "wip",
+          icons: ["sitemap"],
           label: "Head-to-Head"
         },
         {
           id: 3,
-          url: "/custom-mode",
-          icon: "sliders",
+          targetPath: "custom-mode",
+          icons: ["sliders"],
           label: "Custom Mode"
         },
         {
           id: 4,
-          url: "/wip",
-          icon: "champagne-glasses",
+          targetPath: "wip",
+          icons: ["champagne-glasses"],
           label: "Adult Mode",
           isDisplayed: isDisplayingAdultMode
         },
         {
           id: 5,
-          url: "/admin",
-          icon: "key",
+          targetPath: "admin",
+          icons: ["key"],
           label: "Admin",
           isDisplayed: isDisplayingAdminMode
         }

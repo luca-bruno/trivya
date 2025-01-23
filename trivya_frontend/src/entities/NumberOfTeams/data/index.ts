@@ -1,8 +1,10 @@
+const renderIcon = (qty: number) => Array(qty).fill("user")
+
 const buttons = [
   {
     id: 0,
     value: 1,
-    icon: "user",
+    icons: ["user"],
     label: "Solo",
     backgroundColour: "bg-red-tertiary",
     textColour: "text-red-primary"
@@ -10,7 +12,7 @@ const buttons = [
   {
     id: 1,
     value: 2,
-    icon: "user",
+    icons: ["user", "user"],
     label: "2-Player",
     backgroundColour: "bg-blue-secondary",
     textColour: "text-blue-primary"
@@ -18,7 +20,7 @@ const buttons = [
   {
     id: 2,
     value: 3,
-    icon: "user",
+    icons: ["user", "user", "user"],
     label: "3-Player",
     backgroundColour: "bg-green-secondary",
     textColour: "text-green-primary"
@@ -26,7 +28,7 @@ const buttons = [
   {
     id: 3,
     value: 4,
-    icon: "user",
+    icons: ["user", "user", "user", "user"],
     label: "4-Player",
     backgroundColour: "bg-purple-secondary",
     textColour: "text-purple-primary"
