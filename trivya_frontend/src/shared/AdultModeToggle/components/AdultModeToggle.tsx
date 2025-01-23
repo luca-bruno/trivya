@@ -31,7 +31,7 @@ const AdultModeToggle: FC = () => {
       <p className="text-secondary text-3xl laptopL:text-5xl font-bold z-10">
         <FontAwesomeIcon
           icon={["fas", "champagne-glasses"]}
-          className="w-10 laptopL:w-18 h-10 laptopL:h-18 z-20"
+          className="w-10 h-10 laptopL:w-12 laptopL:h-12 z-20"
           />
       </p>
     </button>

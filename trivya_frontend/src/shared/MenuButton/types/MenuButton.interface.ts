@@ -1,13 +1,12 @@
-interface MenuButtonDetailsTypes {
-  key: number
-  url: string
+interface MenuButtonTypes {
+  id: number
+  url?: string
   icon: string
   label: string
-  displayCondition?: boolean
+  isDisplayed?: boolean
+  value?: string | boolean | number
+  backgroundColour?: string
+  textColour?: string
 }
 
-interface MenuButtonTypes {
-  button: MenuButtonDetailsTypes
-}
-
-export { MenuButtonTypes, MenuButtonDetailsTypes }
+export default MenuButtonTypes

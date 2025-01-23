@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from "react"
+import { FC, useContext } from "react"
 import AdultModeToggle from "@shared/AdultModeToggle/components/AdultModeToggle"
 import { Logo } from "@shared/Logo"
 import { MalteseQuestionsToggle } from "@shared/MalteseQuestionsToggle"
@@ -39,9 +39,9 @@ const MainMenu: FC = () => {
           // onSlideChange={() => console.log('slide change')}
           // onSwiper={swiper => console.log(swiper)}
         >
-          {useMenuButtons(isDisplayingAdultMode, isDisplayingAdminMode).map(button => (
-            <SwiperSlide className="p-10 FLEX-CENTER" key={button.key}>
-              <MenuButton {...{ button }} />
+          {useMenuButtons(isDisplayingAdultMode, isDisplayingAdminMode).map(({ id, icon, label, url }) => (
+            <SwiperSlide className="p-10 FLEX-CENTER" key={id}>
+              <MenuButton {...{ id, icon, label, url }} />
             </SwiperSlide>
           ))}
         </Swiper>

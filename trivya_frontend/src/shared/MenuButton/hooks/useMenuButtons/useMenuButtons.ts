@@ -1,51 +1,48 @@
 import { useMemo } from "react"
 
-const useMenuButtons = (isDisplayingAdultMode: boolean, isDisplayingAdminMode: boolean) => useMemo(
+const useMenuButtons = (isDisplayingAdultMode: boolean, isDisplayingAdminMode: boolean) =>
+  useMemo(
     () =>
       [
         {
-          key: 0,
+          id: 0,
           url: "/number-of-teams",
           icon: "dice",
-          label: "Classic Mode",
-          displayCondition: true
+          label: "Classic Mode"
         },
         {
-          key: 1,
+          id: 1,
           url: "/wip",
           icon: "stopwatch",
-          label: "Time Attack",
-          displayCondition: true
+          label: "Time Attack"
         },
         {
-          key: 2,
+          id: 2,
           url: "/wip",
           icon: "sitemap",
-          label: "Head-to-Head",
-          displayCondition: true
+          label: "Head-to-Head"
         },
         {
-          key: 3,
+          id: 3,
           url: "/custom-mode",
           icon: "sliders",
-          label: "Custom Mode",
-          displayCondition: true
+          label: "Custom Mode"
         },
         {
-          key: 4,
+          id: 4,
           url: "/wip",
           icon: "champagne-glasses",
           label: "Adult Mode",
-          displayCondition: isDisplayingAdultMode
+          isDisplayed: isDisplayingAdultMode
         },
         {
-          key: 5,
+          id: 5,
           url: "/admin",
           icon: "key",
           label: "Admin",
-          displayCondition: isDisplayingAdminMode
+          isDisplayed: isDisplayingAdminMode
         }
-      ].filter(button => button.displayCondition),
+      ].filter(({ isDisplayed }) => isDisplayed === undefined || isDisplayed),
     [isDisplayingAdultMode, isDisplayingAdminMode]
   )
 

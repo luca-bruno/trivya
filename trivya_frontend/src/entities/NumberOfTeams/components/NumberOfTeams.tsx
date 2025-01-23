@@ -1,48 +1,32 @@
-import { InstructionPrompt } from "@shared/InstructionPrompt"
-import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
+import Header from "@shared/Header"
+import MenuButton from "@shared/MenuButton"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules"
+import { useState } from "react"
+import buttons from "../data"
 
 const NumberOfTeams = () => {
-  const [teamQuantitySelected, setTeamQuantitySelected] = useState(0)
-
-  useEffect(() => {
-    console.log(teamQuantitySelected)
-  }, [teamQuantitySelected])
+  const [teamQuantitySelected, setTeamQuantitySelected] = useState<number | null>(null)
 
   return (
     <>
-      <InstructionPrompt text="Tap to select number of teams!" />
-      <div className="flex justify-center items-center m-auto h-full">
-        <div>
-          <div>
-            <Link to="/team-selection">
-              <button type="button" className="m-3 bg-primary text-secondary rounded-xl w-24 h-24 text-6xl"
-                onClick={() => setTeamQuantitySelected(1)}>
-                <p className="pb-2">1</p>
-              </button>
-            </Link>
-            <Link to="/team-selection">
-              <button type="button" className="m-3 bg-primary text-secondary rounded-xl w-24 h-24 text-6xl"
-                onClick={() => setTeamQuantitySelected(2)}>
-                <p className="pb-2">2</p>
-              </button>
-            </Link>
-          </div>
-          <div>
-            <Link to="/team-selection">
-              <button type="button" className="m-3 bg-primary text-secondary rounded-xl w-24 h-24 text-6xl"
-                onClick={() => setTeamQuantitySelected(3)}>
-                <p className="pb-2">3</p>
-              </button>
-            </Link>
-            <Link to="/team-selection">
-              <button type="button" className="m-3 bg-primary text-secondary rounded-xl w-24 h-24 text-6xl"
-                onClick={() => setTeamQuantitySelected(4)}>
-                <p className="pb-2">4</p>
-              </button>
-            </Link>
-          </div>
-        </div>
+      <Header displayBackButton backNavigationTarget="/" />
+      {/* <InstructionPrompt text="Tap to select number of teams!" /> */}
+      <div className="FLEX-CENTER m-auto laptop:w-[50%] tablet:w-[45%] mobileL:w-[75%] w-full">
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          navigation
+          slidesPerView={1}
+          // onSlideChange={() => console.log('slide change')}
+          // onSwiper={swiper => console.log(swiper)}
+        >
+          {buttons.map(({ id, icon, label, backgroundColour, textColour }) => (
+            <SwiperSlide className="p-10 FLEX-CENTER" key={id}>
+              <MenuButton {...{ id, icon, label, backgroundColour, textColour }} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </>
   )

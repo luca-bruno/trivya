@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import tilt3dElement from "@shared/helpers/tilt3dElement"
-import { MenuButtonTypes } from "../types/MenuButton.interface"
+import MenuButtonTypes from "../types/MenuButton.interface"
 
-const MenuButton: React.FC<MenuButtonTypes> = ({ button }) => {
-  const { url, icon, label, displayCondition: condition } = button
+const MenuButton: React.FC<MenuButtonTypes> = ({ url, icon, label, isDisplayed = true, backgroundColour, textColour }) => {
   const [style, setStyle] = useState({})
 
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -22,12 +21,22 @@ const MenuButton: React.FC<MenuButtonTypes> = ({ button }) => {
     })
   }
 
-  // eslint-disable-next-line max-len
   const mediaQueries =
     "w-72 h-72 laptopL:h-72 laptopL:w-72 laptop:w-64 laptop:h-64 mobileL:h-56 mobileL:w-56 mobileM:h-52 mobileM:w-52 mobileS:h-48 mobileS:w-48"
 
+  const buttonContents = (
+    <>
+      <FontAwesomeIcon
+        icon={["fas", icon as IconName]}
+        style={{ color: textColour }}
+        className={`${textColour || "text-secondary"} text-4xl laptop:text-5xl laptopL:text-6xl flex m-auto pb-3`}
+      />
+      <p className={`${textColour || "text-secondary"} text-md laptop:text-2xl laptopL:text-3xl font-medium font-secondary select-none`}>{label}</p>
+    </>
+  )
+
   return (
-    condition && (
+    isDisplayed && (
       <div className={`FLEX-CENTER ${mediaQueries}`}>
         <button
           type="button"
@@ -35,12 +44,9 @@ const MenuButton: React.FC<MenuButtonTypes> = ({ button }) => {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           style={style}
-          className={`bg-primary rounded-lg cursor-pointer ${mediaQueries}`}
+          className={`${backgroundColour || "bg-primary"} rounded-lg cursor-pointer ${mediaQueries}`}
         >
-          <Link to={url}>
-            <FontAwesomeIcon icon={["fas", icon as IconName]} className="text-secondary text-4xl laptop:text-5xl laptopL:text-6xl flex m-auto pb-3" />
-            <p className="text-secondary text-md laptop:text-2xl laptopL:text-3xl font-medium font-secondary select-none">{label}</p>
-          </Link>
+          {url ? <Link to={url}>{buttonContents}</Link> : buttonContents}
         </button>
       </div>
     )
