@@ -19,7 +19,7 @@ Test your knowledge by playing solo or challenging friends & family!
   - ✅ **Difficulty Levels** 🎚️ – Customise difficulty settings
   - ✅ **Points System** 🎯 – Configure scoring rules
   - ✅ **Time Limits** ⏱️ – Modify round duration
-  - 🔜 **Online Play** 🌐 – Future feature for remote multiplayer  
+  - 🔜 **Online Play** 🌐 – Challenge friends & family remotely  
 
 
 ### Special Features
