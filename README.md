@@ -23,7 +23,7 @@ Test your knowledge by playing solo or challenging friends & family!
 
 
 ### Special Features
-- ✅ **Adult Mode** 🍻 – Mature-themed questions & drinking forfeits **(Over 18! 🔞)**
+- ✅ **Adult Mode** 🍻 – Mature-themed questions & drinking forfeits **(18+ Only! 🔞)**
 - ✅ **Maltese-Themed Questions** 🇲🇹 – Dive into Malta's history, culture & tradition
 - ✅ **Facts** 💡 – Discover & learn interesting additional facts
 
