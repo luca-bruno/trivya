@@ -3,9 +3,9 @@
 Cross-device webapp quiz solution. 🎲💻📱
 <br>
 
+Test your knowledge by playing solo or challenging friends & family!
 
 ## Features  
-Test your knowledge by playing solo or challenging friends & family!
 
 ### Game Modes
 - ✅ **Classic Mode** 🎲 – Turn-based gameplay **(1-4 players, local multiplayer 📍)**
