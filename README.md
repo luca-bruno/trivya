@@ -1,6 +1,6 @@
 # Trivya (currently ⚠️🚧 under construction!)
 
-Cross-device webapp quiz solution. 🎲💻📱
+Cross-device webapp quiz solution 🎲💻📱
 <br>
 
 Test your knowledge by playing solo or challenging friends & family!
