@@ -1,9 +1,13 @@
 # Trivya (currently ⚠️🚧 under construction!)
 
+<div align = center>
 Cross-device webapp quiz solution 🎲💻📱
+<br>
+  
 <br>
 
 Test your knowledge by playing solo or challenging friends & family!
+</div>
 
 ## Features  
 
