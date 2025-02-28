@@ -1,82 +1,86 @@
-import { Transition, Dialog } from "@headlessui/react"
-import React, { Fragment } from "react"
-import BirthdateDialogButtons from "./BirthdateDialogButtons"
+import React from "react"
+import SlotWheelSelector from "@shared/SlotWheelSelector"
 import { BirthdateDialogTypes } from "../types/BirthdateDialog.interface"
 import BirthdateDialogHeader from "./BirthdateDialogHeader"
-import BirthdateDialogSlots from "./BirthdateDialogSlots"
+import SlotWheels from "./SlotWheels"
+import Dialog from "@shared/Dialog"
+import { MIN_YEAR, MAX_YEAR } from "@shared/constants"
 
 const BirthdateDialog: React.FC<BirthdateDialogTypes> = ({
   cancelButtonRef,
   open,
   closeDialog,
   submitDialog,
-  handleDecrement,
-  handleIncrement,
   day,
   month,
   year,
   setDay,
   setMonth,
-  setYear
-}) => (
-  <Transition.Root show={open} as={Fragment}>
-    <Dialog as="div" className="fixed inset-0 overflow-y-auto z-50" initialFocus={cancelButtonRef} onClose={closeDialog}>
-      <Transition.Child
-        as={Fragment}
-        enter="ease-out duration-300"
-        enterFrom="opacity-0"
-        enterTo="opacity-100"
-        leave="ease-in duration-200"
-        leaveFrom="opacity-100"
-        leaveTo="opacity-0"
-      >
-        <div className="fixed inset-0 bg-black/50 transition-opacity" />
-      </Transition.Child>
+  setYear,
+  getMaxDayForMonth,
+  handleMonthChange,
+  handleYearChange
+}) => {
+  const monthMap = {
+    0: "_",
+    1: "JAN",
+    2: "FEB",
+    3: "MAR",
+    4: "APR",
+    5: "MAY",
+    6: "JUN",
+    7: "JUL",
+    8: "AUG",
+    9: "SEP",
+    10: "OCT",
+    11: "NOV",
+    12: "DEC"
+  }
 
-      <div className="fixed inset-0 z-10 overflow-y-auto">
-        <div className="flex h-[65%] items-end justify-center p-4 text-center">
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0 translate-y-4"
-            enterTo="opacity-100 translate-y-0"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-4"
-          >
-            <Dialog.Panel
-              className="relative transform overflow-hidden rounded-lg bg-secondary
-              text-left shadow-xl transition-all"
-            >
-              <div className="px-4 pb-4 pt-5">
-                <div className="">
-                  <div className="mt-3 text-center text-primary">
-                    <BirthdateDialogHeader />
-
-                    <BirthdateDialogSlots
-                      {...{
-                        handleIncrement,
-                        handleDecrement,
-                        day,
-                        month,
-                        year,
-                        setDay,
-                        setMonth,
-                        setYear
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="flex px-4 py-3">
-                <BirthdateDialogButtons {...{ closeDialog, submitDialog }} />
-              </div>
-            </Dialog.Panel>
-          </Transition.Child>
-        </div>
-      </div>
+  return (
+    <Dialog
+      {...{
+        open,
+        closeDialog,
+        height: "65%",
+        buttons: [
+          { label: "Select All", icon: "caret-left", onClick: () => closeDialog() },
+          { label: "Confirm", icon: "check", onClick: () => submitDialog() }
+        ],
+        cancelButtonRef
+      }}
+    >
+      <BirthdateDialogHeader />
+      <SlotWheels>
+        <SlotWheelSelector
+          {...{
+            minValue: 1,
+            maxValue: getMaxDayForMonth(month, year),
+            setValue: setDay,
+            value: day
+          }}
+        />
+        <SlotWheelSelector
+          {...{
+            minValue: 1,
+            maxValue: 12,
+            setValue: newMonth => handleMonthChange(newMonth),
+            value: month,
+            valueMapper: monthMap
+          }}
+        />
+        <SlotWheelSelector
+          {...{
+            minValue: MIN_YEAR,
+            maxValue: MAX_YEAR,
+            defaultValue: MAX_YEAR,
+            setValue: newYear => handleYearChange(newYear),
+            value: year
+          }}
+        />
+      </SlotWheels>
     </Dialog>
-  </Transition.Root>
-)
+  )
+}
 
 export default BirthdateDialog

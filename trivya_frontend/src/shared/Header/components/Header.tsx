@@ -1,12 +1,12 @@
+import { FC } from "react"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import React from "react"
 import { CountdownCircleTimer } from "react-countdown-circle-timer"
 import { useLocation } from "react-router-dom"
 import HeaderTypes from "../types/Header.interface"
 import { useNavigation } from "@contexts/NavigationContext/NavigationContext"
 
-const Header: React.FC<HeaderTypes> = ({
+const Header: FC<HeaderTypes> = ({
   displayBackButton,
   displayBackButtonCondition = true,
   backButtonIcon = "fa-caret-left",
@@ -22,8 +22,8 @@ const Header: React.FC<HeaderTypes> = ({
 
   const absolutePositionedPages = ["team-selection", "dice-roll"]
 
-  const location = useLocation()
-  const isOnAbsolutePositionedPage = absolutePositionedPages.some(page => location.pathname.includes(page))
+  // const location = useLocation()
+  // const isOnAbsolutePositionedPage = absolutePositionedPages.some(page => location.pathname.includes(page))
 
   //   TODO: placeholder for now, store into its own comp
   const score = 99
@@ -66,7 +66,7 @@ const Header: React.FC<HeaderTypes> = ({
     )
 
   return (
-    <div className={`${isOnAbsolutePositionedPage ? "absolute top-0" : ""} w-full`}>
+    <div className="fixed top-0 z-20 w-full">
       <div className="grid grid-cols-3 pt-4 mb-5 text-primary text-3xl">
         <div className="w-min m-auto mx-5">{displayBackButton ? backButton(backButtonIcon) : ""}</div>
 

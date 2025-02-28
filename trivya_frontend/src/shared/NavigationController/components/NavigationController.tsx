@@ -1,13 +1,15 @@
 import { useNavigation } from "@contexts/NavigationContext/NavigationContext"
 import MainMenu from "@entities/MainMenu"
 import NumberOfTeams from "@entities/NumberOfTeams"
+import GameSettings from "@entities/GameSettings"
 
 const NavigationController = () => {
   const { currentView } = useNavigation()
 
   const views: Record<string, JSX.Element> = {
     "/": <MainMenu />,
-    "number-of-teams": <NumberOfTeams />
+    "number-of-teams": <NumberOfTeams />,
+    "game-settings": <GameSettings />
   }
 
   const renderView = views[currentView] || <MainMenu />

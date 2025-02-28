@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import "./icons"
 import ParticleBackground from "@entities/ParticleBackground"
 import NavigationController from "@shared/NavigationController/components/NavigationController"
+import Header from "@shared/Header"
 
 const App = () => (
   <div className="h-screen">

@@ -24,7 +24,7 @@ const useMenuButtons = (isDisplayingAdultMode: boolean, isDisplayingAdminMode: b
         },
         {
           id: 3,
-          targetPath: "custom-mode",
+          targetPath: "game-settings",
           icons: ["sliders"],
           label: "Custom Mode"
         },

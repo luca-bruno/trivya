@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
-export { default as TeamSelection } from "./components/TeamSelection"
+import TeamSelection from "./components/TeamSelection"
+
+export default TeamSelection

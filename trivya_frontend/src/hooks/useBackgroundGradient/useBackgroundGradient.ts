@@ -2,34 +2,27 @@ import { useEffect } from "react"
 import useBackgroundGradientTypes from "./types/useBackgroundGradient.interface"
 
 const useBackgroundGradient = ({
-  numberOfTeams = 1, team1BackgroundColour, team2BackgroundColour,
-  team3BackgroundColour, team4BackgroundColour
+  numberOfTeams = 1,
+  team1BackgroundColour,
+  team2BackgroundColour,
+  team3BackgroundColour,
+  team4BackgroundColour,
+  reset
 }: useBackgroundGradientTypes) => {
   const secondary = "#0F4C81"
+  const e: HTMLHtmlElement | null = document.querySelector("html")
+
+  if (reset) {
+    if (e !== null) {
+      e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);`
+    }
+  }
 
   useEffect(() => {
-    const e: (HTMLHtmlElement | null) = document.querySelector("html")
-
     switch (numberOfTeams) {
       case 1:
         if (e !== null) {
-          e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);`
-
-          // temp solution for circle in bg
-          // e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);
-          // background-image: radial-gradient(circle at center top, rgba(${parseInt(secondary.slice(1, 3), 16)},
-          //  ${parseInt(secondary.slice(3, 5), 16)}, ${parseInt(secondary.slice(5, 7), 16)}, 0.9) 50%, ${secondary} 50%);
-          // background-size: 100% 100%, 100% 100%;
-          // background-position: center top, center bottom;
-          // background-repeat: no-repeat;`
-
-          // temp solution for gradient in bg
-          // e.style.cssText = `background: linear-gradient(180deg, ${secondary} 50%, ${secondary} 50%);
-          // background-image: radial-gradient(circle at center top, rgba(${parseInt(secondary.slice(1, 3), 16)},
-          //  ${parseInt(secondary.slice(3, 5), 16)}, ${parseInt(secondary.slice(5, 7), 16)}, 0.9) 70%, ${secondary} 30%);
-          // background-size: 100% 100%, 100% 100%;
-          // background-position: center top, center bottom;
-          // background-repeat: no-repeat;`
+          e.style.cssText = `background: linear-gradient(180deg, ${secondary} 0%, #125793 25%, #1461a4 50%, #1461a4 80%, #1668b0 100%)`
         }
         break
 
@@ -66,7 +59,7 @@ const useBackgroundGradient = ({
       default:
         break
     }
-  }, [numberOfTeams, secondary, team1BackgroundColour, team2BackgroundColour, team3BackgroundColour, team4BackgroundColour])
+  }, [e, numberOfTeams, secondary, team1BackgroundColour, team2BackgroundColour, team3BackgroundColour, team4BackgroundColour])
 }
 
 export default useBackgroundGradient

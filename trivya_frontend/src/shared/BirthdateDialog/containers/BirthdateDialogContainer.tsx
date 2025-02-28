@@ -1,7 +1,7 @@
-import React, { useContext, useRef, useState } from "react"
+import { useContext, useRef, useState, useCallback, useEffect } from "react"
 import { AdultModeContext } from "@contexts/AdultModeContext/AdultModeContext"
 import BirthdateDialog from "../components/BirthdateDialog"
-import { MAX_YEAR, MIN_YEAR } from "../constants"
+import { MAX_YEAR, MIN_YEAR } from "@shared/constants"
 
 const BirthdateDialogContainer = () => {
   const [day, setDay] = useState(1)
@@ -9,104 +9,87 @@ const BirthdateDialogContainer = () => {
   const [year, setYear] = useState(MAX_YEAR)
   const [open, setOpen] = useState(true)
 
-  const isYearValid = year >= MIN_YEAR && year <= MAX_YEAR
-  const isValidMonth = month >= 1 && month <= 12
-  const isValidDay = () => {
-    if (day < 1 || day > 31) return false
-
+  // Function to get the max days for the given month and year
+  const getMaxDayForMonth = useCallback((month: number, year: number) => {
     if (month === 2) {
       const isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
-      return (isLeapYear && day <= 29) || (!isLeapYear && day <= 28)
+      return isLeapYear ? 29 : 28
     }
+    const monthsWith30Days = [4, 6, 9, 11]
+    return monthsWith30Days.includes(month) ? 30 : 31
+  }, [])
 
-    const monthsWithThirtyDays = [4, 6, 9, 11]
-    if (monthsWithThirtyDays.includes(month)) return day <= 30
+  // Automatically adjust the day if it's invalid for the selected month/year
+  useEffect(() => {
+    const maxDayInMonth = getMaxDayForMonth(month, year)
+    if (day > maxDayInMonth) {
+      setDay(maxDayInMonth) // Adjust the day to the max day of the selected month/year
+    }
+  }, [month, year, day, getMaxDayForMonth]) // Trigger this effect when month, year, or day changes
 
-    return true
-  }
+  // Handle changes in month
+  const handleMonthChange = useCallback((newMonth: number) => {
+    setMonth(newMonth)
+  }, [])
 
-  const { setIsBirthdateConfirmed, isBirthdateConfirmed, setIsBirthdateDialogDisplayed, setIsDisplayingAdultMode } = useContext(AdultModeContext)
+  // Handle changes in year
+  const handleYearChange = useCallback((newYear: number) => {
+    setYear(newYear)
+  }, [])
+
+  // Validation checks for year, month, and day
+  const isYearValid = year >= MIN_YEAR && year <= MAX_YEAR
+  const isValidMonth = month >= 1 && month <= 12
+  const isValidDay = day > 0 && day <= getMaxDayForMonth(month, year)
+
+  const { setIsBirthdateConfirmed, setIsBirthdateDialogDisplayed, setIsDisplayingAdultMode } = useContext(AdultModeContext)
 
   const closeDialog = () => {
     setOpen(false)
     setIsBirthdateDialogDisplayed(false)
   }
 
+  // Function to validate the birthdate is over 18 years ago
   const correctBirthdateFormat = () => new Date(year, month - 1, day)
 
-  const compareDate = () => {
+  const compareDate = useCallback(() => {
     const eighteenYearsAgo = new Date()
     eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18)
-
     return correctBirthdateFormat() <= eighteenYearsAgo
-  }
+  }, [year, month, day])
 
-  const validateDate = () => {
-    if (isYearValid && isValidMonth && isValidDay()) {
-      if (compareDate()) {
-        setIsBirthdateConfirmed(true)
-      }
+  // Validate the birthdate and confirm if valid
+  const validateDate = useCallback(() => {
+    if (isYearValid && isValidMonth && isValidDay && compareDate()) {
+      setIsBirthdateConfirmed(true)
     }
-  }
+  }, [isYearValid, isValidMonth, isValidDay, compareDate, setIsBirthdateConfirmed])
 
   const submitDialog = () => {
     validateDate()
-    if (isBirthdateConfirmed) {
+    if (isYearValid && isValidMonth && isValidDay && compareDate()) {
       setIsDisplayingAdultMode(true)
     }
     closeDialog()
-  }
-
-  const handleIncrement = (field: string) => {
-    switch (field) {
-      case "day":
-        setDay(prevDay => (prevDay < 31 ? prevDay + 1 : prevDay))
-        break
-      case "month":
-        setMonth(prevMonth => (prevMonth < 12 ? prevMonth + 1 : prevMonth))
-        break
-      case "year":
-        setYear(prevYear => (prevYear < MAX_YEAR ? prevYear + 1 : prevYear))
-        break
-      default:
-        break
-    }
-  }
-
-  const handleDecrement = (field: string) => {
-    switch (field) {
-      case "day":
-        setDay(prevDay => (prevDay > 1 ? prevDay - 1 : prevDay))
-        break
-      case "month":
-        setMonth(prevMonth => (prevMonth > 1 ? prevMonth - 1 : prevMonth))
-        break
-      case "year":
-        setYear(prevYear => (prevYear > MIN_YEAR ? prevYear - 1 : prevYear))
-        break
-      default:
-        break
-    }
   }
 
   const cancelButtonRef = useRef(null)
 
   return (
     <BirthdateDialog
-      {...{
-        cancelButtonRef,
-        open,
-        closeDialog,
-        submitDialog,
-        handleDecrement,
-        handleIncrement,
-        day,
-        month,
-        year,
-        setDay,
-        setMonth,
-        setYear
-      }}
+      cancelButtonRef={cancelButtonRef}
+      open={open}
+      closeDialog={closeDialog}
+      submitDialog={submitDialog}
+      day={day}
+      month={month}
+      year={year}
+      setDay={setDay}
+      setMonth={setMonth}
+      setYear={setYear}
+      getMaxDayForMonth={getMaxDayForMonth}
+      handleMonthChange={handleMonthChange}
+      handleYearChange={handleYearChange}
     />
   )
 }
